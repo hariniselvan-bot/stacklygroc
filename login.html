@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Header</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#f4f8f4,#e7f1e8);
+  min-height:200vh;
+  transition:0.3s;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:#2f6b3c;
+  color:#fff;
+  text-align:center;
+  padding:8px;
+  font-size:14px;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 60px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  transition:all 0.3s ease;
+}
+
+.header.scrolled{
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.1);
+  padding:12px 60px;
+}
+
+/* LOGO */
+.logo img{
+    width:200px;
+    filter: brightness(0) saturate(100%) 
+            invert(73%) sepia(22%) 
+            saturate(567%) hue-rotate(60deg);
+}
+
+/* DESKTOP NAV */
+.nav{
+  position:relative;
+}
+
+.nav ul{
+  display:flex;
+  list-style:none;
+  background:#3d7f4e;
+  padding:12px 35px;
+  border-radius:50px;
+  gap:40px;
+}
+
+.nav ul li{
+  position:relative;
+}
+
+.nav ul li a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav ul li a:hover{
+  transform:translateY(-2px);
+}
+
+/* DESKTOP MEGA MENU */
+.mega-menu{
+  position:absolute;
+  top:70px;
+  left:-50px;
+  width:350px;
+  background:#07340b;
+  color: darkolivegreen;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(20px);
+  transition:0.3s ease;
+}
+
+.dropdown:hover .mega-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.mega-menu h4{
+  margin-bottom:10px;
+  color:#2f6b3c;
+}
+
+.mega-menu a{
+  display:block;
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+/* ICONS */
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.icons i{
+  background:#3d7f4e;
+  color:#fff;
+  padding:10px;
+  border-radius:50%;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.icons i:hover{
+  background:#2f6b3c;
+  transform:scale(1.1);
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  z-index:1100;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .icons{
+    display:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+  .nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#2f6b3c;
+    transform:translateX(-100%);
+    transition:0.4s ease;
+    display:flex;
+    justify-content:center;
+    padding-top:120px;
+  }
+
+  .nav.active{
+    transform:translateX(0);
+  }
+
+  .nav ul{
+    flex-direction:column;
+    background:none;
+    gap:30px;
+    text-align:center;
+  }
+
+  /* Disable desktop hover */
+  .dropdown:hover .mega-menu{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+  }
+
+  .mega-menu{
+    position:static;
+    background:none;
+    box-shadow:none;
+    padding:0;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+
+  .mega-menu.active{
+    max-height:300px;
+  }
+
+  .mega-menu h4{
+    color:#070707;
+    margin-top:15px;
+  }
+
+  .mega-menu a{
+    color:#000000;
+  }
+
+}
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.iconButtonStyle{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:18px;
+  transition:0.3s ease;
+  cursor:pointer;
+}
+
+/* Default style */
+.iconButtonStyle{
+  background:#ffffff;
+  color:#333;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hover effect */
+.iconButtonStyle:hover{
+  transform:translateY(-3px);
+}
+@media (max-width: 768px) {
+  .icons {
+    display: none;
+  }
+}
+.logo img{
+    width:220px;
+    height:auto;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    <img src="logo.webp" alt="logo">
+  </div>
+ <nav class="nav">
+    <ul>
+      <li class="dropdown">
+        <a href="index.html" class="home-toggle">HOME</a>
+
+        <div class="mega-menu">
+          <h4>Home Pages</h4>
+          <a href="home.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="shop.html">SHOP</a></li>
+      <li><a href="dashboard.html">DASHBOARD</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      
+    </ul>
+  </nav>
+
+  <div class="icons">
+
+  <a href="login.html" style="color:#6affb4;" class="iconButtonStyle">
+    <i class="fa-regular fa-user"></i>
+  </a>
+
+  <a href="contact.html" class="iconButtonStyle">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </a>
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-solid fa-bag-shopping"></i>
+  </a>
+
+</div>
+
+  <div class="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+</header>
+
+<script>
+
+/* STICKY */
+window.addEventListener("scroll", function(){
+  document.querySelector(".header")
+  .classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* HAMBURGER */
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector(".nav");
+const body = document.body;
+
+hamburger.addEventListener("click", ()=>{
+  nav.classList.toggle("active");
+  body.classList.toggle("menu-open");
+
+  const icon = hamburger.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+/* MOBILE DROPDOWN */
+const homeToggle = document.querySelector(".home-toggle");
+const megaMenu = document.querySelector(".mega-menu");
+
+homeToggle.addEventListener("click", function(e){
+  if(window.innerWidth <= 900){
+    e.preventDefault();
+    megaMenu.classList.toggle("active");
+  }
+});
+
+</script>
+
+<!-- ================= LOGIN / SIGNUP SECTION ================= -->
+
+<section class="login-section">
+
+    <div class="auth-container" id="authBox">
+
+        <!-- LEFT PANEL -->
+        <div class="auth-left">
+            <h2>Welcome Back!</h2>
+            <p>Login to continue shopping fresh groceries delivered in 10 minutes 🚚</p>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="auth-right">
+
+            <!-- LOGIN -->
+            <form class="auth-form login">
+                <h2>Login</h2>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="auth-btn">Login</button>
+
+                <div class="switch-text">
+                    Don't have an account?
+                    <span onclick="toggleAuth()">Sign Up</span>
+                </div>
+            </form>
+
+            <!-- SIGNUP -->
+            <form class="auth-form signup">
+                <h2>Create Account</h2>
+
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="auth-btn">Sign Up</button>
+
+                <div class="switch-text">
+                    Already have an account?
+                    <span onclick="toggleAuth()">Login</span>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</section>
+<style>
+   /* ================= LOGIN SECTION ================= */
+
+.login-section{
+    min-height:100vh;
+    padding:120px 0;   /* space below header */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+
+    /* 🔹 ADD YOUR BACKGROUND IMAGE HERE */
+    background-image:url("h2b2.jpg");   /* change image name */
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* Optional Dark Overlay (Recommended) */
+.login-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);  /* adjust darkness */
+}
+
+/* ================= GLASS CONTAINER ================= */
+
+.auth-container{
+    width:900px;
+    height:550px;
+    display:flex;
+    border-radius:20px;
+    overflow:hidden;
+
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+
+    position:relative;
+    z-index:2;  /* above overlay */
+}
+
+/* ================= LEFT PANEL ================= */
+
+.auth-left{
+    width:50%;
+    background:#2e7d32;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    text-align:center;
+}
+
+.auth-left h2{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.auth-left p{
+    font-size:15px;
+    opacity:0.9;
+}
+
+/* ================= RIGHT PANEL ================= */
+
+.auth-right{
+    width:50%;
+    padding:60px 50px;
+    position:relative;
+    background:rgba(255,255,255,0.05);
+}
+
+/* ================= FORMS ================= */
+
+.auth-form{
+    position:absolute;
+    width:100%;
+}
+
+.auth-form h2{
+    margin-bottom:30px;
+    color:#ffffff;
+}
+
+/* ================= INPUTS ================= */
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    background:rgba(255,255,255,0.2);
+    color:#fff;
+}
+
+.input-group input::placeholder{
+    color:#e0e0e0;
+}
+
+/* ================= BUTTON ================= */
+
+.auth-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#ffffff;
+    color:#1b5e20;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ================= SWITCH TEXT ================= */
+
+.switch-text{
+    margin-top:20px;
+    color:#ffffff;
+    font-size:14px;
+}
+
+.switch-text span{
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ================= TOGGLE LOGIC ================= */
+
+.signup{
+    display:none;
+}
+
+.auth-container.active .login{
+    display:none;
+}
+
+.auth-container.active .signup{
+    display:block;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .auth-container{
+        width:95%;
+        height:auto;
+        flex-direction:column;
+    }
+
+    .auth-left,
+    .auth-right{
+        width:100%;
+    }
+
+    .auth-right{
+        padding:40px 25px;
+    }
+
+    .auth-form{
+        position:relative;
+    }
+}
+</style>
+<script>
+function toggleAuth(){
+    document.getElementById("authBox").classList.toggle("active");
+}
+</script>
+
+
+<!-- FOOTER -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="hariniFooterSection">
+
+    <div class="hariniFooterContainer">
+
+        <!-- BRAND SECTION -->
+        <div class="hariniFooterBrand">
+            <!-- Replace this text with your Stackly logo image -->
+            <h2 class="hariniFooterLogo">Stackly</h2>
+
+            <p>Fresh & Organic Grocery Store</p>
+
+            <p>
+                24, Green Market Street,<br>
+                Chennai, Tamil Nadu, India
+            </p>
+
+            <a href="contact.html" class="hariniMapLink">Open in Maps</a>
+
+            <p class="hariniContactInfo">
+                support@stackly.com <br>
+                +91 98765 43210
+            </p>
+
+            <div class="hariniSocialIcons">
+                <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="404.html"><i class="fab fa-instagram"></i></a>
+                <a href="404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- COMPANY -->
+        <div class="hariniFooterColumn">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                
+                <li><a href="shop.html">shop </a></li>
+                <li><a href="dashboard.html">dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- CUSTOMER -->
+        <div class="hariniFooterColumn">
+            <h4>Customer</h4>
+            <ul>
+                <li><a href="404.html">My Account</a></li>
+                <li><a href="404.html">Track Order</a></li>
+                <li><a href="404.html">Return Policy</a></li>
+                <li><a href="404.html">FAQs</a></li>
+                <li><a href="404.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="hariniFooterColumn">
+            <h4>Newsletter</h4>
+            <p>Subscribe to get fresh deals & healthy tips.</p>
+
+            <div class="hariniNewsletterBox">
+                <input type="email" placeholder="Enter your email">
+                <button><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <small>
+                By subscribing, you agree to our Terms & Privacy Policy.
+            </small>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="hariniFooterBottom">
+        <p>© 2026 Stackly Grocery. All Rights Reserved.</p>
+
+        <div class="hariniPayments">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+            <i class="fab fa-cc-paypal"></i>
+        </div>
+    </div>
+
+</footer>
+<style>
+    .hariniFooterSection{
+    background:#5e845e;
+    padding:80px 8% 30px;
+    font-family:'Poppins',sans-serif;
+    color:#393737;
+}
+
+.hariniFooterContainer{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:50px;
+    margin-bottom:50px;
+}
+
+.hariniFooterLogo{
+    font-size:32px;
+    font-weight:700;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.hariniFooterBrand p{
+    margin:10px 0;
+    color:#1f1c1c;
+    line-height:1.6;
+}
+
+.hariniMapLink{
+    color:#ff8f00;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.hariniContactInfo{
+    margin-top:15px;
+}
+
+.hariniSocialIcons{
+    margin-top:15px;
+}
+
+.hariniSocialIcons a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    background:#303325;
+    border-radius:50%;
+    margin-right:12px;
+    color:#ffffff;
+    transition:0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.hariniSocialIcons a:hover{
+    background:#2e7d32;
+    color:#fff;
+    transform:translateY(-5px);
+}
+
+/* Columns */
+.hariniFooterColumn h4{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.hariniFooterColumn ul{
+    list-style:none;
+    padding:0;
+}
+
+.hariniFooterColumn ul li{
+    margin-bottom:12px;
+}
+
+.hariniFooterColumn ul li a{
+    text-decoration:none;
+    color:#ffffff;
+    transition:0.3s;
+}
+
+.hariniFooterColumn ul li a:hover{
+    color:#2e7d32;
+}
+
+/* Newsletter */
+.hariniNewsletterBox{
+    display:flex;
+    margin:15px 0;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid #ddd;
+}
+
+.hariniNewsletterBox input{
+    border:none;
+    padding:12px 15px;
+    flex:1;
+    outline:none;
+}
+
+.hariniNewsletterBox button{
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    padding:0 18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hariniNewsletterBox button:hover{
+    background:#1b5e20;
+}
+
+.hariniFooterColumn small{
+    color:#fcfcfc;
+}
+
+/* Bottom */
+.hariniFooterBottom{
+    border-top:1px solid #ddd;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.hariniPayments i{
+    font-size:26px;
+    margin-left:15px;
+    color:#666;
+    transition:0.3s;
+}
+
+.hariniPayments i:hover{
+    color:#2e7d32;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .hariniFooterContainer{
+        grid-template-columns:1fr;
+    }
+
+    .hariniFooterBottom{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+</style>

@@ -1,0 +1,2917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Header</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#f4f8f4,#e7f1e8);
+  min-height:200vh;
+  transition:0.3s;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:#2f6b3c;
+  color:#fff;
+  text-align:center;
+  padding:8px;
+  font-size:14px;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 60px;
+  position:absolute;   /* changed */
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  transition:all 0.3s ease;
+}.header.scrolled{
+  position:fixed;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(15px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.08);
+  padding:12px 60px;
+}
+
+
+
+.header.scrolled .logo img{
+  filter: brightness(0) saturate(100%) 
+          invert(34%) sepia(22%) 
+          saturate(600%) hue-rotate(70deg);
+}
+
+/* DESKTOP NAV */
+.nav{
+  position:relative;
+}
+
+.nav ul{
+  display:flex;
+  list-style:none;
+  background:#3d7f4e;
+  padding:12px 35px;
+  border-radius:50px;
+  gap:40px;
+}
+
+.nav ul li{
+  position:relative;
+}
+
+.nav ul li a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav ul li a:hover{
+  transform:translateY(-2px);
+}
+
+/* DESKTOP MEGA MENU */
+.mega-menu{
+  position:absolute;
+  top:70px;
+  left:-50px;
+  width:350px;
+  background:#07340b;
+  color: darkolivegreen;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(20px);
+  transition:0.3s ease;
+}
+
+.dropdown:hover .mega-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.mega-menu h4{
+  margin-bottom:10px;
+  color:#2f6b3c;
+}
+
+.mega-menu a{
+  display:block;
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+/* ICONS */
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.icons i{
+  background:#3d7f4e;
+  color:#fff;
+  padding:10px;
+  border-radius:50%;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.icons i:hover{
+  background:#2f6b3c;
+  transform:scale(1.1);
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  z-index:1100;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .icons{
+    display:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+  .nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#2f6b3c;
+    transform:translateX(-100%);
+    transition:0.4s ease;
+    display:flex;
+    justify-content:center;
+    padding-top:120px;
+  }
+
+  .nav.active{
+    transform:translateX(0);
+  }
+
+  .nav ul{
+    flex-direction:column;
+    background:none;
+    gap:30px;
+    text-align:center;
+  }
+
+  /* Disable desktop hover */
+  .dropdown:hover .mega-menu{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+  }
+
+  .mega-menu{
+    position:static;
+    background:none;
+    box-shadow:none;
+    padding:0;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+
+  .mega-menu.active{
+    max-height:300px;
+  }
+
+  .mega-menu h4{
+    color:#070707;
+    margin-top:15px;
+  }
+
+  .mega-menu a{
+    color:#000000;
+  }
+
+}
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.iconButtonStyle{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:18px;
+  transition:0.3s ease;
+  cursor:pointer;
+}
+
+/* Default style */
+.iconButtonStyle{
+  background:#ffffff;
+  color:#333;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hover effect */
+.iconButtonStyle:hover{
+  transform:translateY(-3px);
+}
+@media (max-width: 768px) {
+  .icons {
+    display: none;
+  }
+}
+.logo img{
+    width:220px;
+    height:auto;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    <img src="logo.webp" alt="logo">
+  </div>
+
+  <nav class="nav">
+    <ul>
+      <li class="dropdown">
+        <a href="index.html" class="home-toggle">HOME 2</a>
+
+        <div class="mega-menu">
+          <h4>Home Pages</h4>
+          <a href="home2.html">Home 2</a>
+          <a href="home.html">Home 1</a>
+        </div>
+      </li>
+      <li><a href="grocessery.html">GROCERY</a></li>
+      <li><a href="homeessentials.html">HOME ESSENTIALS</a></li>
+      <li><a href="food.html">SWEET AND SNACKS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      
+    </ul>
+  </nav>
+
+  <div class="icons">
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-regular fa-user"></i>
+  </a>
+
+  <a href="contact.html" class="iconButtonStyle">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </a>
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-solid fa-bag-shopping"></i>
+  </a>
+
+</div>
+
+  <div class="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+</header>
+
+<script>
+
+/* STICKY */
+window.addEventListener("scroll", function(){
+  document.querySelector(".header")
+  .classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* HAMBURGER */
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector(".nav");
+const body = document.body;
+
+hamburger.addEventListener("click", ()=>{
+  nav.classList.toggle("active");
+  body.classList.toggle("menu-open");
+
+  const icon = hamburger.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+/* MOBILE DROPDOWN */
+const homeToggle = document.querySelector(".home-toggle");
+const megaMenu = document.querySelector(".mega-menu");
+
+homeToggle.addEventListener("click", function(e){
+  if(window.innerWidth <= 900){
+    e.preventDefault();
+    megaMenu.classList.toggle("active");
+  }
+});
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<title>Premium Food Hero</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+}
+
+/* HERO */
+#heroFoodWrapper{
+    height:100vh;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    transition:1s ease;
+    display:flex;
+    align-items:center;
+}
+
+/* HALF CIRCLE */
+#foodHalfCircle{
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:42%;
+    border-top-right-radius:65% 55%;
+    border-bottom-right-radius:65% 55%;
+    transition:1s ease;
+}
+
+/* IMAGE */
+#foodMovingImage{
+    position:absolute;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center;
+    bottom:-320px;
+    left:-180px;
+    opacity:0;
+    z-index:5;
+
+    /* 🔥 Zoom Effect */
+    transform:scale(1.15);
+    transition:all 1.6s ease-in-out;
+    box-shadow:0 25px 45px rgba(0,0,0,0.25);
+}
+
+/* CONTENT */
+#foodContentBlock{
+    margin-left:auto;
+    width:600px;
+    margin-right:8%;
+}
+
+#foodHeading{
+    font-family:'Playfair Display', serif;
+    font-size:70px;
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:20px;
+    opacity:0;
+    transform:translateX(-60px);
+    transition:0.8s ease;
+}
+
+#foodParagraph{
+    font-size:22px;
+    line-height:1.8;
+    margin-bottom:35px;
+    opacity:0;
+    transform:translateX(-60px);
+    transition:0.8s ease;
+}
+
+/* BUTTONS */
+#buttonWrapperZone{
+    display:flex;
+    gap:20px;
+    opacity:0;
+    transform:translateX(-60px);
+    transition:0.8s ease;
+}
+
+.themeButtonStyle{
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s ease;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.themeButtonStyle:hover{
+    transform:translateY(-3px);
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:992px){
+
+#heroFoodWrapper{
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+}
+
+#foodHalfCircle{
+    width:100%;
+    height:40%;
+    border-radius:0 0 60% 60%;
+}
+
+#foodContentBlock{
+    width:90%;
+    margin:0 auto;
+}
+
+#foodHeading{
+    font-size:42px;
+}
+
+#foodParagraph{
+    font-size:18px;
+}
+
+#foodMovingImage{
+    width:220px;
+    height:220px;
+}
+
+#buttonWrapperZone{
+    justify-content:center;
+}
+
+}
+@media(max-width:992px){
+
+#heroFoodWrapper{
+    display:block;
+    text-align:center;
+    padding:0;
+}
+
+/* Top curved background */
+#foodHalfCircle{
+    width:100%;
+    height:260px;
+    border-radius:0 0 60% 60%;
+    top:0;
+}
+
+/* Image centered perfectly */
+#foodMovingImage{
+    position:absolute;
+    width:200px;
+    height:200px;
+    top:80px;
+    left:50% !important;
+    bottom:auto !important;
+    transform:translateX(-50%) scale(1.15) !important;
+    opacity:1 !important;
+}
+
+/* Content below image */
+#foodContentBlock{
+    width:90%;
+    margin:300px auto 50px auto;
+}
+
+/* Heading */
+#foodHeading{
+    font-size:34px;
+    line-height:1.2;
+}
+
+/* Paragraph */
+#foodParagraph{
+    font-size:16px;
+    margin-bottom:25px;
+}
+
+/* Buttons */
+#buttonWrapperZone{
+    justify-content:center;
+    gap:15px;
+}
+
+.themeButtonStyle{
+    padding:12px 28px;
+    font-size:14px;
+}
+
+}
+</style>
+
+
+<section class="hero">
+
+  <div class="slides">
+
+    <!-- SLIDE 1 -->
+    <div class="slide active" style="background-image: url('h2b.webp');">
+      <div class="content">
+        <h4>100% Healthy & Affordable</h4>
+        <h1>Organic Vegetables</h1>
+        <p>Small Changes Big Difference</p>
+        <a href="contact.html">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide" style="background-image: url('h2b2.webp');">
+      <div class="content">
+        <h4>GROCA</h4>
+        <h1>Vegetable 100% Organic</h1>
+        <p>50% OFF</p>
+        <a href="contact.html">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide" style="background-image: url('h2b3.webp');">
+      <div class="content">
+        <h4>Natural Health Care Ingredients</h4>
+        <h1>Grocery Shopping</h1>
+        <p>Save upto 30% off</p>
+        <a href="contact.html">Shop Now</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<style>
+    *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero{
+  width:100%;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.slides{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+.content{
+  background:white;
+  padding:50px;
+  text-align:center;
+  border-radius:10px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+.content h4{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.content h1{
+  font-size:48px;
+  color:#5ca93d;
+  margin-bottom:15px;
+}
+
+.content p{
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+.content a{
+  display:inline-block;
+  padding:12px 30px;
+  background:#5ca93d;
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+  transition:0.3s;
+}
+
+.content a:hover{
+  background:#4a8c30;
+}
+</style>
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function changeSlide(){
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}
+
+setInterval(changeSlide, 2000);
+</script>
+
+<section class="category-section">
+
+  <div class="category-container">
+
+    <!-- VEGGIES CARD -->
+    <div class="category-card veggie-card reveal">
+      <div class="category-image">
+        <img src="hero.webp" alt="Veggies">
+      </div>
+
+      <div class="category-content">
+        <h3>Veggies</h3>
+        <p><strong>100%</strong> Organic<br>Products</p>
+        <a href="contact.html" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+    <!-- FRUITS CARD -->
+    <div class="category-card fruit-card reveal">
+      <div class="category-image">
+        <img src="fruits.webp" alt="Fruits">
+      </div>
+
+      <div class="category-content">
+        <h3>Fruits</h3>
+        <p><strong>100%</strong> Fresh<br>Products</p>
+        <a href="contact.html" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<style>
+    *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.category-section{
+  padding:80px 5%;
+  background:#285538;
+}
+
+.category-container{
+  display:flex;
+  gap:40px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* CARD STYLE */
+.category-card{
+  flex:1 1 500px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:50px;
+  border-radius:10px;
+  position:relative;
+  overflow:hidden;
+  min-height:250px;
+}
+
+/* HALF CIRCLE BACKGROUND */
+.category-card::before{
+  content:"";
+  position:absolute;
+  right:-120px;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  z-index:0;
+}
+
+/* Different background colors */
+.veggie-card{
+  background:#e7c4c4;
+}
+
+.veggie-card::before{
+  background:#d8a1a1;
+}
+
+.fruit-card{
+  background:#f3dc6a;
+}
+
+.fruit-card::before{
+  background:#f0cd3d;
+}
+
+/* IMAGE */
+.category-image{
+  position:relative;
+  z-index:2;
+}
+
+.category-image img{
+  width:180px;
+}
+
+/* CONTENT */
+.category-content{
+  position:relative;
+  z-index:2;
+  text-align:left;
+}
+
+.category-content h3{
+  font-size:26px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.category-content p{
+  font-size:20px;
+  margin-bottom:20px;
+  line-height:1.5;
+}
+
+.buy-btn{
+  display:inline-block;
+  padding:10px 25px;
+  background:#ff6b00;
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.buy-btn:hover{
+  background:#e65c00;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .category-card{
+    flex-direction:column;
+    text-align:center;
+    gap:20px;
+  }
+
+  .category-content{
+    text-align:center;
+  }
+
+  .category-card::before{
+    right:-80px;
+  }
+}
+/* IMAGE ZOOM EFFECT */
+.category-image{
+  overflow:hidden;
+}
+
+.category-image img{
+  width:180px;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-image img{
+  transform: scale(1.15);
+}
+
+/* SCROLL REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform: translateY(0);
+}
+</style>
+    <script>
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach((element) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+    const revealPoint = 100;
+
+    if (elementTop < windowHeight - revealPoint) {
+      element.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+<section class="products-section">
+
+  <div class="products-header">
+    <h2>Our Products</h2>
+    <p>Mauris vitae ultricies leo integer malesuada nunc vel in arcu cursus</p>
+  </div>
+
+  <div class="products-container">
+
+    <div class="product-item reveal">
+      <div class="circle green">
+        <i class="fa-solid fa-glass-water"></i>
+      </div>
+      <h4>Milk</h4>
+    </div>
+
+    <div class="product-item reveal">
+      <div class="circle pink">
+        <i class="fa-solid fa-apple-whole"></i>
+      </div>
+      <h4>Fruits</h4>
+    </div>
+
+    <div class="product-item reveal">
+      <div class="circle blue">
+        <i class="fa-solid fa-wheat-awn"></i>
+      </div>
+      <h4>Flour</h4>
+    </div>
+
+    <div class="product-item reveal">
+      <div class="circle yellow">
+        <i class="fa-solid fa-drumstick-bite"></i>
+      </div>
+      <h4>Meat</h4>
+    </div>
+
+    <div class="product-item reveal">
+      <div class="circle violet">
+        <i class="fa-solid fa-carrot"></i>
+      </div>
+      <h4>Vegetables</h4>
+    </div>
+
+    <div class="product-item reveal">
+      <div class="circle grey">
+        <i class="fa-solid fa-egg"></i>
+      </div>
+      <h4>Eggs</h4>
+    </div>
+
+  </div>
+
+</section>
+<style>
+    .products-section{
+  padding:80px 5%;
+  text-align:center;
+  background:#2b4b2c;
+  font-family:'Poppins', sans-serif;
+}
+
+.products-header h2{
+  font-size:36px;
+  color:#6fbf4a;
+  margin-bottom:15px;
+}
+
+.products-header p{
+  margin-bottom:60px;
+  color:#ffffff;
+}
+
+/* FLEX LAYOUT */
+.products-container{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+/* PRODUCT ITEM */
+.product-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  transition:0.4s ease;
+  cursor:pointer;
+}
+
+.product-item h4{
+  margin-top:18px;
+  font-size:18px;
+  font-weight:600;
+}
+
+/* CIRCLE */
+.circle{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.4s ease;
+}
+
+/* ICON */
+.circle i{
+  font-size:40px;
+  color:#222;
+  transition:0.4s ease;
+}
+
+/* COLORS */
+.green{ background:#8bc34a; }
+.pink{ background:#f5c6c6; }
+.blue{ background:#c6d9f5; }
+.yellow{ background:#f5e6a3; }
+.violet{ background:#e8c6f5; }
+.grey{ background:#d6deef; }
+
+/* HOVER EFFECT */
+.product-item:hover{
+  transform:translateY(-8px);
+}
+
+.product-item:hover .circle{
+  transform:scale(1.1);
+}
+
+.product-item:hover .circle i{
+  transform:scale(1.2);
+}
+
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+<script>
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach((element) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      element.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:#385b47;
+}
+
+/* ================= SECTION ================= */
+.products{
+  padding:80px 5%;
+}
+
+.products-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:40px;
+}
+
+/* ================= CARD ================= */
+.product-card{
+  background:#fff;
+  padding:30px;
+  text-align:center;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+  transition:0.4s ease;
+}
+
+/* Hover lift */
+.product-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Image */
+.product-card img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  margin-bottom:20px;
+}
+
+/* Title */
+.product-card h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+/* Stars */
+.stars{
+  color:#f4c430;
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+/* Price */
+.price{
+  color:#6fbf4a;
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:20px;
+}
+
+/* Button */
+.btn{
+  display:inline-block;
+  padding:10px 30px;
+  background:#6fbf4a;
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#5da63e;
+}
+
+/* ================= ZOOM ANIMATION ================= */
+.zoom-card{
+  opacity:0;
+  transform:scale(0.7);
+  transition:all 0.8s ease;
+}
+
+.zoom-card.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="products">
+
+ <div class="products-container">
+
+  <!-- CARD 1 -->
+  <div class="product-card zoom-card">
+    <img src="horse.webp" alt="">
+    <h3>Horse Gram</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 500.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="product-card zoom-card">
+    <img src="candy.webp" alt="">
+    <h3>Coco Cookies</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 300.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="product-card zoom-card">
+    <img src="vetch.webp" alt="">
+    <h3>Vetch Seeds</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 1,000.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="product-card zoom-card">
+    <img src="cookie.webp" alt="">
+    <h3>Butter Cookies</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 300.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="product-card zoom-card">
+    <img src="fish.webp" alt="">
+    <h3>Fish Curry</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 1,600.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- CARD 6 -->
+  <div class="product-card zoom-card">
+    <img src="raddish.webp" alt="">
+    <h3>Beetroot</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 100.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- NEW CARD 7 -->
+  <div class="product-card zoom-card">
+    <img src="rice.webp" alt="">
+    <h3>Organic Rice</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 800.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+  <!-- NEW CARD 8 -->
+  <div class="product-card zoom-card">
+    <img src="lobster.webp" alt="">
+    <h3>Almond Nuts</h3>
+    <div class="stars">★★★★★</div>
+    <div class="price">Rs. 1,200.00</div>
+    <a href="contact.html" class="btn">Add To Cart</a>
+  </div>
+
+</div>
+  </div>
+
+</section>
+
+<script>
+function zoomInOnScroll() {
+  const cards = document.querySelectorAll(".zoom-card");
+
+  cards.forEach(card => {
+    const windowHeight = window.innerHeight;
+    const cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < windowHeight - 100) {
+      card.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", zoomInOnScroll);
+window.addEventListener("load", zoomInOnScroll);
+</script>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<section class="discount-section">
+
+  <div class="overlay"></div>
+
+  <div class="discount-container">
+
+    <div class="discount-content">
+      <h2>Special Discounts on Fresh Grocery</h2>
+
+      <p>
+        Enjoy exclusive savings on farm-fresh vegetables, fruits, grains,
+        and daily essentials. We deliver freshness and quality straight
+        from trusted farms to your home.
+      </p>
+
+      <a href="contact.html" class="discount-btn">Shop Now</a>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+    .discount-section{
+  position:relative;
+  padding:100px 5%;
+  background:url("gg.webp") center/cover no-repeat;
+  overflow:hidden;
+}
+
+/* Soft overlay so text is readable */
+.overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(205,232,168,0.85); /* light green overlay */
+  z-index:1;
+}
+
+.discount-container{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.discount-content{
+  flex:1;
+}
+
+.discount-content h2{
+  font-size:40px;
+  color:#4e9c2e;
+  margin-bottom:25px;
+  line-height:1.3;
+}
+
+.discount-content p{
+  font-size:18px;
+  color:#333;
+  line-height:1.7;
+  margin-bottom:30px;
+  max-width:600px;
+}
+
+.discount-btn{
+  display:inline-block;
+  padding:14px 40px;
+  background:#6fbf4a;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.discount-btn:hover{
+  background:#5aa63a;
+  transform:translateY(-4px);
+}
+
+.discount-image{
+  flex:1;
+  text-align:center;
+}
+
+.discount-image img{
+  max-width:100%;
+}
+</style>
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:#273d2c;
+}
+
+/* ================= SECTION ================= */
+.special-products{
+  padding:80px 5%;
+}
+
+.section-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-header h2{
+  font-size:36px;
+  color:#6fbf4a;
+  margin-bottom:10px;
+}
+
+.section-header p{
+  color:#ffffff;
+}
+
+/* ================= GRID ================= */
+.products-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:30px;
+}
+
+/* ================= CARD ================= */
+.special-card{
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  transition:0.4s ease;
+  position:relative;
+}
+
+.special-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Badge */
+.badge{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:#ff3b3b;
+  color:#fff;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+/* Image */
+.special-card img{
+  width:100%;
+  height:160px;
+  object-fit:contain;
+  margin-bottom:15px;
+}
+
+/* Title */
+.special-card h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+/* Stars */
+.stars{
+  color:#f4c430;
+  margin-bottom:8px;
+}
+
+/* Price */
+.price{
+  color:#6fbf4a;
+  font-weight:600;
+  font-size:18px;
+}
+
+.old-price{
+  text-decoration:line-through;
+  color:#999;
+  font-size:14px;
+  margin-left:8px;
+}
+
+/* ================= SLIDE FROM LEFT ANIMATION ================= */
+.slide-left{
+  opacity:0;
+  transform:translateX(-120px);
+  transition:all 0.9s ease;
+}
+
+.slide-left.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="special-products">
+
+  <div class="section-header">
+    <h2>Special Products</h2>
+    <p>Ut tellus elementum sagittis vitae et leo.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="special-card slide-left">
+      <span class="badge">Save 92%</span>
+      <img src="fruits.webp">
+      <h3>Watermelon</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 700.00 <span class="old-price">Rs. 9,300.00</span></div>
+    </div>
+
+    <div class="special-card slide-left">
+      <span class="badge">Save 99%</span>
+      <img src="Tomato.webp">
+      <h3>Tomato</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 100.00 <span class="old-price">Rs. 37,600.00</span></div>
+    </div>
+
+    <div class="special-card slide-left">
+      <span class="badge">Save 99%</span>
+      <img src="Spinach.webp">
+      <h3>Coriander</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 200.00 <span class="old-price">Rs. 37,400.00</span></div>
+    </div>
+
+    <div class="special-card slide-left">
+      <span class="badge">Sold Out</span>
+      <img src="beef.webp">
+      <h3>Egg</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 400.00 <span class="old-price">Rs. 18,700.00</span></div>
+    </div>
+
+    <div class="special-card slide-left">
+      <span class="badge">Sold Out</span>
+      <img src="chicken.webp">
+      <h3>Chicken Breast</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 1,300.00 <span class="old-price">Rs. 46,700.00</span></div>
+    </div>
+
+    <div class="special-card slide-left">
+      <span class="badge">Sold Out</span>
+      <img src="badam.webp">
+      <h3>Badam</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 1,600.00 <span class="old-price">Rs. 28,200.00</span></div>
+    </div>
+
+    <div class="special-card slide-left">
+      <img src="nut.webp">
+      <h3>Nuts Cookies</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 300.00</div>
+    </div>
+
+    <div class="special-card slide-left">
+      <img src="rice.webp">
+      <h3>TM Rice</h3>
+      <div class="stars">★★★★★</div>
+      <div class="price">Rs. 1,300.00</div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+function slideLeftAnimation() {
+  const cards = document.querySelectorAll(".slide-left");
+
+  cards.forEach(card => {
+    const windowHeight = window.innerHeight;
+    const cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < windowHeight - 100) {
+      card.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", slideLeftAnimation);
+window.addEventListener("load", slideLeftAnimation);
+</script>
+
+
+<style>
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:#355523;
+}
+
+/* ===== SECTION ===== */
+.latest-news{
+  padding:120px 5%;
+  width:100%;
+}
+
+.news-header{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.news-header h2{
+  font-size:42px;
+  color:#6fbf4a;
+  margin-bottom:15px;
+}
+
+.news-header p{
+  font-size:18px;
+  color:#ffffff;
+}
+
+/* ===== GRID ===== */
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));
+  gap:40px;
+}
+
+/* ===== CARD ===== */
+.news-card{
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:0.4s ease;
+}
+
+/* Hover lift */
+.news-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Image wrapper */
+.news-img{
+  overflow:hidden;
+}
+
+.news-img img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  transition:0.6s ease;
+}
+
+/* Image zoom on hover */
+.news-card:hover .news-img img{
+  transform:scale(1.1);
+}
+
+/* Content */
+.news-content{
+  padding:30px;
+}
+
+.meta{
+  font-size:14px;
+  color:#6fbf4a;
+  margin-bottom:15px;
+}
+
+.news-content h3{
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+.news-content p{
+  font-size:16px;
+  color:#555;
+  line-height:1.7;
+  margin-bottom:25px;
+}
+
+.read-btn{
+  display:inline-block;
+  padding:12px 30px;
+  background:#6fbf4a;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  transition:0.3s;
+}
+
+.read-btn:hover{
+  background:#5aa63a;
+}
+
+/* ===== ZOOM IN ON SCROLL ===== */
+.zoom-news{
+  opacity:0;
+  transform:scale(0.8);
+  transition:all 0.9s ease;
+}
+
+.zoom-news.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<section class="latest-news">
+
+  <div class="news-header">
+    <h2>Latest News</h2>
+    <p>Stay updated with our healthy grocery tips & fresh arrivals.</p>
+  </div>
+
+  <div class="news-grid">
+
+    <div class="news-card zoom-news">
+      <div class="news-img">
+        <img src="beef.webp">
+      </div>
+      <div class="news-content">
+        <div class="meta">By Ramamoorthi M | March 26, 2020</div>
+        <h3>Best In Quality Fresh Meat & Seafood</h3>
+        <p>Discover premium quality meat and seafood sourced from trusted suppliers to ensure freshness and taste.</p>
+        <a href="contact.html" class="read-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="news-card zoom-news">
+      <div class="news-img">
+        <img src="nut.webp">
+      </div>
+      <div class="news-content">
+        <div class="meta">By Ramamoorthi M | March 25, 2020</div>
+        <h3>Best Way To Eat Dry Fruits And Nuts</h3>
+        <p>Learn how to include nutritious dry fruits and nuts in your daily routine for better health benefits.</p>
+        <a href="contact.html" class="read-btn">Read More</a>
+      </div>
+    </div>
+
+    <div class="news-card zoom-news">
+      <div class="news-img">
+        <img src="fruits.webp">
+      </div>
+      <div class="news-content">
+        <div class="meta">By Ramamoorthi M | March 22, 2020</div>
+        <h3>Fruits & Vegetable Nutrients For Your Health</h3>
+        <p>Explore the essential vitamins and nutrients found in fresh fruits and vegetables.</p>
+        <a href="contact.html" class="read-btn">Read More</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+function zoomNews() {
+  const cards = document.querySelectorAll(".zoom-news");
+
+  cards.forEach(card => {
+    const windowHeight = window.innerHeight;
+    const cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < windowHeight - 100) {
+      card.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", zoomNews);
+window.addEventListener("load", zoomNews);
+</script>
+
+
+<section class="hariniMarketBanner">
+
+  <div class="hariniMarketWrapper">
+
+    <!-- LEFT TEXT AREA -->
+    <div class="hariniMarketText animateLeftToRight">
+
+      <h1 class="hariniMainHeading">
+        Your One Stop <br>
+        Marketplace For <br>
+        Quality.
+      </h1>
+
+      <p class="hariniSubText">
+        Experience fresh groceries, organic vegetables, and daily essentials
+        delivered straight from trusted sources to your home.
+      </p>
+
+      <p class="hariniSubText">
+        Shop smarter, live healthier, and enjoy premium quality products
+        at the best prices.
+      </p>
+
+      <a href="contact.html" class="hariniDiscoverBtn">Discover Now</a>
+
+    </div>
+
+    <!-- CENTER IMAGE (YOU ADD IMAGE HERE) -->
+    <div class="hariniMarketImage">
+      <img src="family.webp" alt="Grocery Family">
+    </div>
+
+  </div>
+
+</section>
+<style>
+    /* ================= HARINI MARKET BANNER ================= */
+
+.hariniMarketBanner{
+  padding:110px 6%;
+  background:#2d4926;
+  overflow:hidden;
+}
+
+.hariniMarketWrapper{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+/* TEXT AREA */
+.hariniMarketText{
+  flex:1;
+  max-width:580px;
+}
+
+.hariniMainHeading{
+  font-size:50px;
+  color:#ffffff;
+  line-height:1.2;
+  margin-bottom:25px;
+  font-weight:700;
+}
+
+.hariniSubText{
+  font-size:18px;
+  color:#ffffff;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.hariniDiscoverBtn{
+  display:inline-block;
+  padding:14px 40px;
+  background:#0e4f4a;
+  color:#fff;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:600;
+  transition:0.3s ease;
+}
+
+.hariniDiscoverBtn:hover{
+  background:#0b3f3b;
+  transform:translateY(-3px);
+}
+
+/* IMAGE AREA */
+.hariniMarketImage{
+  flex:1;
+  text-align:center;
+}
+
+.hariniMarketImage img{
+  max-width:100%;
+  height:auto;
+}
+
+/* LEFT TO RIGHT TEXT ANIMATION */
+.animateLeftToRight{
+  opacity:0;
+  transform:translateX(-150px);
+  transition:all 1s ease;
+}
+
+.animateLeftToRight.showAnimation{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .hariniMarketWrapper{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hariniMainHeading{
+    font-size:38px;
+  }
+
+  .hariniMarketText{
+    max-width:100%;
+  }
+}
+</style>
+<script>
+function hariniTextAnimation() {
+  const element = document.querySelector(".animateLeftToRight");
+  const windowHeight = window.innerHeight;
+  const elementTop = element.getBoundingClientRect().top;
+
+  if (elementTop < windowHeight - 100) {
+    element.classList.add("showAnimation");
+  }
+}
+
+window.addEventListener("scroll", hariniTextAnimation);
+window.addEventListener("load", hariniTextAnimation);
+</script>
+
+<section class="hariniScrollStory">
+
+  <div class="hariniScrollContainer">
+
+    <!-- LEFT IMAGE COLUMN -->
+    <div class="hariniImageColumn">
+      <img src="hero.webp" alt="Hero Image">
+    </div>
+
+    <!-- CENTER STICKY TEXT -->
+    <div class="hariniTextColumn">
+      <div class="hariniStickyContent">
+
+        <span class="hariniTag">Exclusive Discount</span>
+
+        <h1>
+          Discover a smarter way to shop everyday essentials
+          and quality products online.
+        </h1>
+
+        <p>
+          Browse carefully selected products designed to match modern
+          lifestyles, offering convenience and a seamless shopping
+          experience from start to finish.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE COLUMN -->
+    <div class="hariniImageColumn">
+      <img src="grocesserymamn.webp" alt="">
+    </div>
+
+  </div>
+
+</section>
+<style>
+    /* SECTION HEIGHT */
+.hariniScrollStory{
+  background:#e9e1d6;
+  padding:120px 6%;
+}
+
+/* GRID LAYOUT */
+.hariniScrollContainer{
+  display:grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap:60px;
+}
+
+/* IMAGE COLUMN */
+.hariniImageColumn{
+  display:flex;
+  flex-direction:column;
+  gap:100px;
+}
+
+.hariniImageColumn img{
+  width:100%;
+  border-radius:20px;
+}
+
+/* STICKY TEXT COLUMN */
+.hariniTextColumn{
+  position:relative;
+}
+
+/* THIS MAKES TEXT STICK */
+.hariniStickyContent{
+  position:sticky;
+  top:120px;
+  text-align:center;
+}
+
+/* TEXT STYLE */
+.hariniTag{
+  display:inline-block;
+  background:#a5d46a;
+  padding:8px 20px;
+  border-radius:20px;
+  font-size:14px;
+  margin-bottom:25px;
+}
+
+.hariniStickyContent h1{
+  font-size:48px;
+  line-height:1.2;
+  margin-bottom:25px;
+  color:#222;
+}
+
+.hariniStickyContent p{
+  font-size:18px;
+  color:#555;
+  line-height:1.7;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .hariniScrollContainer{
+    grid-template-columns:1fr;
+  }
+
+  .hariniStickyContent{
+    position:relative;
+    top:0;
+  }
+}
+</style>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<section class="hariniSeasonSection">
+
+  <div class="hariniSeasonWrapper">
+
+    <!-- LEFT CONTENT -->
+    <div class="hariniSeasonContent">
+      <h2>what’s delicious in<br>december</h2>
+
+      <p>
+        This month of celebrations is abundant with hearty
+        veg and colourful fruit.
+      </p>
+
+      <a href="contact.html" class="hariniSeasonBtn">Shop In Season</a>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="hariniSeasonImage">
+
+      <img src="eat.webp" alt="Season Food">
+
+      <!-- PRICE TAGS -->
+      <span class="priceTag tag1">$14.29</span>
+      <span class="priceTag tag2">$917.67</span>
+      <span class="priceTag tag3">$30.00–$55.00</span>
+      <span class="priceTag tag4">$434.08</span>
+      <span class="priceTag tag5">$89.84</span>
+      <span class="priceTag tag6">$36.59</span>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+    /* ===== SECTION ===== */
+.hariniSeasonSection{
+  padding:100px 5%;
+  background:#e9e9ec;
+}
+
+.hariniSeasonWrapper{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  background:#f0f1f4;
+  border-radius:30px;
+  padding:60px;
+}
+
+/* LEFT CONTENT */
+.hariniSeasonContent{
+  flex:1;
+}
+
+.hariniSeasonContent h2{
+  font-size:48px;
+  color:#3b4a92;
+  line-height:1.2;
+  margin-bottom:20px;
+  text-transform:lowercase;
+}
+
+.hariniSeasonContent p{
+  font-size:18px;
+  color:#6d6d6d;
+  margin-bottom:40px;
+}
+
+.hariniSeasonBtn{
+  display:inline-block;
+  padding:15px 40px;
+  background:#3b4a92;
+  color:#fff;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.hariniSeasonBtn:hover{
+  background:#2f3d7d;
+  transform:translateY(-3px);
+}
+
+/* RIGHT IMAGE */
+.hariniSeasonImage{
+  flex:1.5;
+  position:relative;
+}
+
+.hariniSeasonImage img{
+  width:100%;
+  border-radius:25px;
+}
+
+/* PRICE TAGS */
+.priceTag{
+  position:absolute;
+  background:#f35a8d;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:600;
+  font-size:14px;
+  box-shadow:0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* TAG POSITIONS */
+.tag1{ top:10%; left:15%; }
+.tag2{ top:30%; left:35%; }
+.tag3{ top:45%; left:10%; }
+.tag4{ top:60%; right:20%; }
+.tag5{ top:15%; right:10%; }
+.tag6{ bottom:15%; right:15%; }
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .hariniSeasonWrapper{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hariniSeasonImage{
+    width:100%;
+  }
+}
+</style>
+
+<section class="hariniQuickDelivery">
+
+  <div class="hariniQuickWrapper">
+
+    <!-- LEFT VAN IMAGE -->
+    <div class="hariniVanBox">
+      <img src="van.webp" alt="Delivery Van">
+    </div>
+
+    <!-- CENTER TEXT -->
+    <div class="hariniDeliveryText">
+      <h2>Groceries Delivered in <span>10 Minutes</span></h2>
+      <p>Fast. Fresh. Right at your doorstep.</p>
+    </div>
+
+    <!-- RIGHT IMAGE + BUTTON -->
+    <div class="hariniDeliveryRight">
+      <img src="delivery.webp" alt="Delivery Girl">
+      <a href="contact.html" class="hariniOrderBtn">Order Now</a>
+    </div>
+
+  </div>
+
+</section>
+<style>
+    /* ===== SECTION ===== */
+.hariniQuickDelivery{
+  padding:60px 5%;
+  background:#17753b;
+}
+
+.hariniQuickWrapper{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  background:linear-gradient(90deg,#6ca275,#d1e3d2);
+  padding:40px 60px;
+  border-radius:30px;
+  flex-wrap:wrap;
+}
+
+/* LEFT VAN */
+.hariniVanBox img{
+  width:220px;
+}
+
+/* CENTER TEXT */
+.hariniDeliveryText{
+  flex:1;
+}
+
+.hariniDeliveryText h2{
+  font-size:36px;
+  color:#3b4a92;
+  margin-bottom:10px;
+}
+
+.hariniDeliveryText h2 span{
+  color:#00b86b;
+  font-weight:700;
+}
+
+.hariniDeliveryText p{
+  color:#666;
+  font-size:18px;
+}
+
+/* RIGHT SIDE */
+.hariniDeliveryRight{
+  position:relative;
+  text-align:center;
+}
+
+.hariniDeliveryRight img{
+  width:250px;
+  border-radius:20px;
+}
+
+/* BUTTON */
+.hariniOrderBtn{
+  position:absolute;
+  top:20px;
+  right:-20px;
+  padding:14px 35px;
+  background:#3b4a92;
+  color:#fff;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.hariniOrderBtn:hover{
+  background:#2f3d7d;
+  transform:translateY(-3px);
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .hariniQuickWrapper{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hariniOrderBtn{
+    position:relative;
+    top:20px;
+    right:0;
+  }
+}
+</style>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+
+
+<!-- FOOTER -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="hariniFooterSection">
+
+    <div class="hariniFooterContainer">
+
+        <!-- BRAND SECTION -->
+        <div class="hariniFooterBrand">
+            <!-- Replace this text with your Stackly logo image -->
+            <h2 class="hariniFooterLogo">Stackly</h2>
+
+            <p>Fresh & Organic Grocery Store</p>
+
+            <p>
+                24, Green Market Street,<br>
+                Chennai, Tamil Nadu, India
+            </p>
+
+            <a href="contact.html" class="hariniMapLink">Open in Maps</a>
+
+            <p class="hariniContactInfo">
+                support@stackly.com <br>
+                +91 98765 43210
+            </p>
+
+            <div class="hariniSocialIcons">
+                <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="404.html"><i class="fab fa-instagram"></i></a>
+                <a href="404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- COMPANY -->
+        <div class="hariniFooterColumn">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="home2.html">HOME 2</a></li>
+                <li><a href="grocessery.html">GROCERY</a></li>
+                <li><a href="homeessentials.html">HOME ESSENTIALS</a></li>
+                <li><a href="food.html">SWEET AND SNACKS</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- CUSTOMER -->
+        <div class="hariniFooterColumn">
+            <h4>Customer</h4>
+            <ul>
+                <li><a href="404.html">My Account</a></li>
+                <li><a href="404.html">Track Order</a></li>
+                <li><a href="404.html">Return Policy</a></li>
+                <li><a href="404.html">FAQs</a></li>
+                <li><a href="404.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="hariniFooterColumn">
+            <h4>Newsletter</h4>
+            <p>Subscribe to get fresh deals & healthy tips.</p>
+
+            <div class="hariniNewsletterBox">
+                <input type="email" placeholder="Enter your email">
+                <button><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <small>
+                By subscribing, you agree to our Terms & Privacy Policy.
+            </small>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="hariniFooterBottom">
+        <p>© 2026 Stackly Grocery. All Rights Reserved.</p>
+
+        <div class="hariniPayments">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+            <i class="fab fa-cc-paypal"></i>
+        </div>
+    </div>
+
+</footer>
+<style>
+    .hariniFooterSection{
+    background:#5e845e;
+    padding:80px 8% 30px;
+    font-family:'Poppins',sans-serif;
+    color:#393737;
+}
+
+.hariniFooterContainer{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:50px;
+    margin-bottom:50px;
+}
+
+.hariniFooterLogo{
+    font-size:32px;
+    font-weight:700;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.hariniFooterBrand p{
+    margin:10px 0;
+    color:#1f1c1c;
+    line-height:1.6;
+}
+
+.hariniMapLink{
+    color:#ff8f00;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.hariniContactInfo{
+    margin-top:15px;
+}
+
+.hariniSocialIcons{
+    margin-top:15px;
+}
+
+.hariniSocialIcons a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    background:#303325;
+    border-radius:50%;
+    margin-right:12px;
+    color:#ffffff;
+    transition:0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.hariniSocialIcons a:hover{
+    background:#2e7d32;
+    color:#fff;
+    transform:translateY(-5px);
+}
+
+/* Columns */
+.hariniFooterColumn h4{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.hariniFooterColumn ul{
+    list-style:none;
+    padding:0;
+}
+
+.hariniFooterColumn ul li{
+    margin-bottom:12px;
+}
+
+.hariniFooterColumn ul li a{
+    text-decoration:none;
+    color:#ffffff;
+    transition:0.3s;
+}
+
+.hariniFooterColumn ul li a:hover{
+    color:#2e7d32;
+}
+
+/* Newsletter */
+.hariniNewsletterBox{
+    display:flex;
+    margin:15px 0;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid #ddd;
+}
+
+.hariniNewsletterBox input{
+    border:none;
+    padding:12px 15px;
+    flex:1;
+    outline:none;
+}
+
+.hariniNewsletterBox button{
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    padding:0 18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hariniNewsletterBox button:hover{
+    background:#1b5e20;
+}
+
+.hariniFooterColumn small{
+    color:#fcfcfc;
+}
+
+/* Bottom */
+.hariniFooterBottom{
+    border-top:1px solid #ddd;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.hariniPayments i{
+    font-size:26px;
+    margin-left:15px;
+    color:#666;
+    transition:0.3s;
+}
+
+.hariniPayments i:hover{
+    color:#2e7d32;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .hariniFooterContainer{
+        grid-template-columns:1fr;
+    }
+
+    .hariniFooterBottom{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+</style>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading...</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#1b5e20,#4caf50);
+}
+
+/* Loader Container */
+.loader-wrapper{
+    text-align:center;
+    color:#fff;
+}
+
+/* Logo */
+.loader-logo{
+    width:120px;
+    margin-bottom:30px;
+}
+
+/* Spinner */
+.spinner{
+    width:60px;
+    height:60px;
+    border:6px solid rgba(255,255,255,0.3);
+    border-top:6px solid #ffffff;
+    border-radius:50%;
+    margin:0 auto 20px;
+    animation:spin 1s linear infinite;
+}
+
+/* Loading Text */
+.loader-text{
+    font-size:18px;
+    letter-spacing:1px;
+}
+
+/* Spin Animation */
+@keyframes spin{
+    0%{ transform:rotate(0deg); }
+    100%{ transform:rotate(360deg); }
+}
+
+</style>
+</head>
+<body>
+
+<div class="loader-wrapper">
+
+    <!-- Replace with your logo -->
+    <img src="logo.webp" class="loader-logo" alt="Logo">
+
+    <div class="spinner"></div>
+
+    <div class="loader-text">
+        Loading Fresh Groceries...
+    </div>
+
+</div>
+
+<script>
+
+/* Auto Redirect After 3 Seconds */
+setTimeout(function(){
+    window.location.href = "home.html";  // change if needed
+},3000);
+
+</script>
+
+</body>
+</html>

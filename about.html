@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Header</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#f4f8f4,#e7f1e8);
+  min-height:200vh;
+  transition:0.3s;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:#2f6b3c;
+  color:#fff;
+  text-align:center;
+  padding:8px;
+  font-size:14px;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 60px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  transition:all 0.3s ease;
+}
+
+.header.scrolled{
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.1);
+  padding:12px 60px;
+}
+
+/* LOGO */
+.logo img{
+    width:200px;
+    filter: brightness(0) saturate(100%) 
+            invert(73%) sepia(22%) 
+            saturate(567%) hue-rotate(60deg);
+}
+
+/* DESKTOP NAV */
+.nav{
+  position:relative;
+}
+
+.nav ul{
+  display:flex;
+  list-style:none;
+  background:#3d7f4e;
+  padding:12px 35px;
+  border-radius:50px;
+  gap:40px;
+}
+
+.nav ul li{
+  position:relative;
+}
+
+.nav ul li a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav ul li a:hover{
+  transform:translateY(-2px);
+}
+
+/* DESKTOP MEGA MENU */
+.mega-menu{
+  position:absolute;
+  top:70px;
+  left:-50px;
+  width:350px;
+  background:#07340b;
+  color: darkolivegreen;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(20px);
+  transition:0.3s ease;
+}
+
+.dropdown:hover .mega-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.mega-menu h4{
+  margin-bottom:10px;
+  color:#2f6b3c;
+}
+
+.mega-menu a{
+  display:block;
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+/* ICONS */
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.icons i{
+  background:#3d7f4e;
+  color:#fff;
+  padding:10px;
+  border-radius:50%;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.icons i:hover{
+  background:#2f6b3c;
+  transform:scale(1.1);
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  z-index:1100;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .icons{
+    display:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+    /* Make header fixed on mobile and prevent page content from scrolling under it */
+    .header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        width:100%;
+        z-index:1200;
+        background:linear-gradient(135deg,#f4f8f4,#e7f1e8);
+    }
+
+    /* Add top padding so content doesn't sit under the fixed header */
+    body{
+        padding-top:90px;
+    }
+
+  .nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#2f6b3c;
+    transform:translateX(-100%);
+    transition:0.4s ease;
+    display:flex;
+    justify-content:center;
+    padding-top:120px;
+  }
+
+  .nav.active{
+    transform:translateX(0);
+  }
+
+  .nav ul{
+    flex-direction:column;
+    background:none;
+    gap:30px;
+    text-align:center;
+  }
+
+  /* Disable desktop hover */
+  .dropdown:hover .mega-menu{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+  }
+
+  .mega-menu{
+    position:static;
+    background:none;
+    box-shadow:none;
+    padding:0;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+
+  .mega-menu.active{
+    max-height:300px;
+  }
+
+  .mega-menu h4{
+    color:#070707;
+    margin-top:15px;
+  }
+
+  .mega-menu a{
+    color:#000000;
+  }
+
+}
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.iconButtonStyle{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:18px;
+  transition:0.3s ease;
+  cursor:pointer;
+}
+
+/* Default style */
+.iconButtonStyle{
+  background:#ffffff;
+  color:#333;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hover effect */
+.iconButtonStyle:hover{
+  transform:translateY(-3px);
+}
+@media (max-width: 768px) {
+  .icons {
+    display: none;
+  }
+}
+.logo img{
+    width:220px;
+    height:auto;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    <img src="logo.webp" alt="logo">
+  </div>
+
+  <nav class="nav">
+    <ul>
+      <li class="dropdown">
+        <a href="index.html" class="home-toggle">HOME</a>
+
+        <div class="mega-menu">
+          <h4>Home Pages</h4>
+          <a href="home.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </li>
+      <li><a href="about.html" style="color:#6affb4;">ABOUT US</a></li>
+      <li><a href="shop.html">SHOP</a></li>
+      <li><a href="dashboard.html">DASHBOARD</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      
+    </ul>
+  </nav>
+
+  <div class="icons">
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-regular fa-user"></i>
+  </a>
+
+  <a href="contact.html" class="iconButtonStyle">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </a>
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-solid fa-bag-shopping"></i>
+  </a>
+
+</div>
+
+  <div class="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+</header>
+
+<script>
+
+/* STICKY */
+window.addEventListener("scroll", function(){
+  document.querySelector(".header")
+  .classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* HAMBURGER */
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector(".nav");
+const body = document.body;
+
+hamburger.addEventListener("click", ()=>{
+  nav.classList.toggle("active");
+  body.classList.toggle("menu-open");
+
+  const icon = hamburger.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+/* MOBILE DROPDOWN */
+const homeToggle = document.querySelector(".home-toggle");
+const megaMenu = document.querySelector(".mega-menu");
+
+homeToggle.addEventListener("click", function(e){
+  if(window.innerWidth <= 900){
+    e.preventDefault();
+    megaMenu.classList.toggle("active");
+  }
+});
+
+</script>
+
+
+<style>
+body{
+    margin:0;
+    padding:0;
+}
+/* ================= HERO SECTION ================= */
+body{
+    margin:0;
+    padding:0;
+}
+.hariniHero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 8%;   /* REMOVE TOP SPACE */
+}
+
+.hariniHeroContainer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    width:100%;
+}
+
+/* LEFT CONTENT */
+.hariniHeroLeft{
+    flex:1;
+}
+
+.hariniHeroLeft h5{
+    color:#4caf50;
+    font-weight:500;
+    margin-bottom:15px;
+}
+
+.hariniHeroLeft h1{
+    font-size:52px;
+    line-height:1.2;
+    color:#1e1e1e;
+    margin-bottom:20px;
+}
+
+.hariniHeroLeft p{
+    color:#666;
+    font-size:15px;
+    margin-bottom:30px;
+    max-width:500px;
+}
+
+.hariniHeroBtn{
+    display:inline-block;
+    padding:14px 35px;
+    background:#34a853;
+    color:#fff;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.hariniHeroBtn:hover{
+    background:#2e7d32;
+    transform:translateY(-3px);
+}
+
+/* RIGHT IMAGE */
+.hariniHeroRight{
+    flex:1;
+    text-align:center;
+}
+
+.hariniHeroRight img{
+    width:100%;
+    max-width:520px;
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.hariniAbout{
+    padding:100px 8%;
+    background:#ffffff;
+}
+
+.hariniAboutContainer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+.hariniAboutLeft{
+    flex:1;
+}
+
+.hariniAboutLeft h2{
+    font-size:40px;
+    margin-bottom:20px;
+    color:#1b5e20;
+}
+
+.hariniAboutLeft p{
+    font-size:15px;
+    color:#555;
+    line-height:1.8;
+}
+
+.hariniAboutRight{
+    flex:1;
+}
+
+.hariniAboutRight img{
+    width:100%;
+    max-width:450px;
+    border-radius:20px;
+}
+.hariniHero{
+    min-height:120vh;   /* Bigger than screen */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 8%;
+    background:#eef3ef;
+}
+
+.hariniHeroContainer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:80px;
+    width:100%;
+}
+
+/* LEFT CONTENT */
+.hariniHeroLeft{
+    flex:1;
+}
+
+.hariniHeroLeft h5{
+    color:#4caf50;
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:20px;
+}
+
+.hariniHeroLeft h1{
+    font-size:72px;        /* BIGGER */
+    line-height:1.1;
+    color:#1e1e1e;
+    margin-bottom:30px;
+    font-weight:700;
+}
+
+.hariniHeroLeft p{
+    color:#666;
+    font-size:18px;        /* Bigger paragraph */
+    margin-bottom:40px;
+    max-width:600px;
+    line-height:1.7;
+}
+
+.hariniHeroBtn{
+    display:inline-block;
+    padding:18px 45px;     /* Bigger button */
+    background:#34a853;
+    color:#fff;
+    border-radius:40px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.hariniHeroBtn:hover{
+    background:#2e7d32;
+    transform:translateY(-4px);
+}
+
+/* RIGHT IMAGE */
+.hariniHeroRight{
+    flex:1;
+    text-align:center;
+}
+
+.hariniHeroRight img{
+    width:100%;
+    max-width:650px;   /* BIGGER IMAGE */
+}
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+    .hariniHeroContainer,
+    .hariniAboutContainer{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hariniHeroLeft h1{
+        font-size:38px;
+    }
+
+    .hariniAboutLeft h2{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hariniHero">
+    <div class="hariniHeroContainer">
+
+        <!-- LEFT -->
+        <div class="hariniHeroLeft">
+            <h5>𝓐𝓑𝓞𝓤𝓣 𝓤𝓢</h5>
+            <h1>𝙂𝙧𝙤𝙘𝙚𝙧𝙞𝙚𝙨<br>𝘿𝙚𝙡𝙞𝙫𝙚𝙧𝙚𝙙<br>𝙏𝙤 𝙔𝙤𝙪𝙧 𝙃𝙤𝙢𝙚</h1>
+            <p>
+                𝑾𝒆 𝒂𝒓𝒆 𝒄𝒐𝒎𝒎𝒊𝒕𝒕𝒆𝒅 𝒕𝒐 𝒅𝒆𝒍𝒊𝒗𝒆𝒓𝒊𝒏𝒈 𝒕𝒉𝒆 𝒇𝒓𝒆𝒔𝒉𝒆𝒔𝒕 𝒗𝒆𝒈𝒆𝒕𝒂𝒃𝒍𝒆𝒔 𝒂𝒏𝒅 𝒇𝒓𝒖𝒊𝒕𝒔     
+             𝒔𝒕𝒓𝒂𝒊𝒈𝒉𝒕 𝒇𝒓𝒐𝒎 𝒕𝒉𝒆 𝒇𝒂𝒓𝒎 𝒕𝒐 𝒚𝒐𝒖𝒓 𝒉𝒐𝒎𝒆. 𝑶𝒖𝒓 𝒎𝒊𝒔𝒔𝒊𝒐𝒏 𝒊𝒔 𝒕𝒐 𝒑𝒓𝒐𝒎𝒐𝒕𝒆         
+             𝒉𝒆𝒂𝒍𝒕𝒉𝒚 𝒍𝒊𝒗𝒊𝒏𝒈 𝒃𝒚 𝒑𝒓𝒐𝒗𝒊𝒅𝒊𝒏𝒈 100% 𝒏𝒂𝒕𝒖𝒓𝒂𝒍 𝒂𝒏𝒅 𝒐𝒓𝒈𝒂𝒏𝒊𝒄 𝒑𝒓𝒐𝒅𝒖𝒄𝒕𝒔            
+            𝒘𝒊𝒕𝒉 𝒇𝒂𝒔𝒕 𝒂𝒏𝒅 𝒓𝒆𝒍𝒊𝒂𝒃𝒍𝒆 𝒅𝒆𝒍𝒊𝒗𝒆𝒓𝒚 𝒔𝒆𝒓𝒗𝒊𝒄𝒆.
+            </p>
+            <a href="contact.html" class="hariniHeroBtn">Start Shopping</a>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="hariniHeroRight">
+            <img src="hero.webp" alt="Grocery Basket">
+        </div>
+
+    </div>
+</section>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+
+<section class="hariniMarketSection">
+    <div class="hariniMarketContainer">
+
+        <!-- CARD 1 -->
+        <div class="hariniMarketCard lightGray">
+            <div class="hariniMarketContent">
+                <h2>Simple marketplace<br>choices for smart buyers</h2>
+                <p>
+                    Discover marketplace products chosen for quality,
+                    durability, and everyday usability.
+                </p>
+                <a href="contact.html" class="hariniMarketBtn">Shop Now</a>
+            </div>
+            <img src="eat.webp" alt="">
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="hariniMarketCard lightBeige">
+            <div class="hariniMarketContent">
+                <h2>Curated marketplace<br>goods for daily life</h2>
+                <p>
+                    A modern marketplace bringing together reliable
+                    sellers and quality products in one place.
+                </p>
+                <a href="contact.html" class="hariniMarketBtn">Shop Now</a>
+            </div>
+            <img src="fruits.webp" alt="">
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="hariniMarketCard lightPurple">
+            <div class="hariniMarketContent">
+                <h2>Trusted marketplace<br>items for daily needs</h2>
+                <p>
+                    Shop confidently with curated products designed
+                    for daily needs and practical use.
+                </p>
+                <a href="contact.html" class="hariniMarketBtn">Shop Now</a>
+            </div>
+            <img src="dryfruits.webp" alt="">
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* ================= SECTION ================= */
+
+.hariniMarketSection{
+    padding:100px 6%;
+    background:#f3f3f3;
+}
+
+.hariniMarketContainer{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+/* ================= CARD ================= */
+
+.hariniMarketCard{
+    width:380px;
+    border-radius:20px;
+    padding:40px 30px 0 30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+    transition:0.6s ease;
+
+    /* Animation initial state */
+    opacity:0;
+    transform:translateX(-120px);
+}
+
+.hariniMarketCard.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.hariniMarketCard:hover{
+    transform:translateY(-10px);
+}
+
+/* Background colors */
+.lightGray{ background:#e9ecef; }
+.lightBeige{ background:#e8d7b5; }
+.lightPurple{ background:#e7e6ec; }
+
+/* ================= CONTENT ================= */
+
+.hariniMarketContent h2{
+    font-size:28px;
+    line-height:1.3;
+    color:#0f3d3e;
+    margin-bottom:15px;
+}
+
+.hariniMarketContent p{
+    font-size:15px;
+    color:#444;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.hariniMarketBtn{
+    display:inline-block;
+    padding:12px 28px;
+    background:#0f3d3e;
+    color:#fff;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.hariniMarketBtn:hover{
+    background:#063233;
+}
+
+/* ================= IMAGE SAME SIZE ================= */
+
+.hariniMarketCard img{
+    width:100%;
+    height:260px;          /* SAME SIZE */
+    object-fit:contain;    /* Keeps image ratio */
+    margin-top:30px;
+    transition:0.4s ease;
+}
+
+.hariniMarketCard:hover img{
+    transform:scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+    .hariniMarketContainer{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hariniMarketCard{
+        width:100%;
+        max-width:400px;
+    }
+}
+</style>
+
+<script>
+function revealMarketCards() {
+    const cards = document.querySelectorAll(".hariniMarketCard");
+
+    cards.forEach((card, index) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = card.getBoundingClientRect().top;
+        const revealPoint = 100;
+
+        if (elementTop < windowHeight - revealPoint) {
+            setTimeout(() => {
+                card.classList.add("show");
+            }, index * 200); // stagger animation
+        } else {
+            card.classList.remove("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealMarketCards);
+</script>
+
+<section class="hariniShopSection">
+
+    <div class="hariniShopWrapper">
+
+        <!-- LEFT SHOP -->
+        <div class="hariniShopBlock fadeAnim">
+
+            <div class="hariniShopHeader">
+                <div class="hariniShopLogo">S</div>
+                <div>
+                    <h3>Blonwe</h3>
+                    <p>Minde råra playrst dengar. Spårpixel aplavis då lan...</p>
+                </div>
+                <div class="hariniRating">
+                    ⭐ 4.17/12K
+                    <span>Final Reviews</span>
+                </div>
+            </div>
+
+            <div class="hariniProductGrid">
+
+                <!-- PRODUCT 1 -->
+                <div class="hariniProductCard">
+                    <span class="discount">42%</span>
+                    <img src="Cauliflower.webp">
+                    <h4>Pork Center Cut Loin Chops Thin Boneless</h4>
+                    <div class="price">
+                        <span class="new">$10.07</span>
+                        <span class="old">$17.15</span>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2 -->
+                <div class="hariniProductCard">
+                    <span class="discount">38%</span>
+                    <img src="Tomato.webp">
+                    <h4>Marketside Skinless Atlantic tomato Fillet</h4>
+                    <div class="price">
+                        <span class="new">$9.95</span>
+                        <span class="old">$15.00</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- RIGHT SHOP -->
+        <div class="hariniShopBlock fadeAnim">
+
+            <div class="hariniShopHeader">
+                <div class="hariniShopLogo purple">G</div>
+                <div>
+                    <h3>Grogin</h3>
+                    <p>Minde råra playrst dengar. Spårpixel aplavis då lan...</p>
+                </div>
+                <div class="hariniRating">
+                    ⭐ 3.33/15K
+                    <span>Final Reviews</span>
+                </div>
+            </div>
+
+            <div class="hariniProductGrid">
+
+                <!-- PRODUCT 3 -->
+                <div class="hariniProductCard">
+                    <span class="discount">33%</span>
+                    <img src="bread.webp">
+                    <h4>S.Pellegrino Sparkling Natural Mineral</h4>
+                    <div class="price">
+                        <span class="new">$13.47</span>
+                        <span class="old">$18.05</span>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 4 -->
+                <div class="hariniProductCard">
+                    <span class="discount">45%</span>
+                    <img src="beverages.webp">
+                    <h4>OLIPOP Prebiotic Soda Strawberry Vanilla</h4>
+                    <div class="price">
+                        <span class="new">$1.98</span>
+                        <span class="old">$3.50</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<style>
+    .hariniShopSection{
+    padding:100px 6%;
+    background:#f2f4f5;
+}
+
+.hariniShopWrapper{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hariniShopBlock{
+    background:#e9edef;
+    padding:30px;
+    border-radius:20px;
+    width:600px;
+    transition:0.6s ease;
+
+    /* Fade animation */
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.hariniShopBlock.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* HEADER */
+.hariniShopHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    gap:15px;
+}
+
+.hariniShopLogo{
+    width:50px;
+    height:50px;
+    background:#ff9800;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.hariniShopLogo.purple{
+    background:#6c63ff;
+}
+
+.hariniRating{
+    font-size:14px;
+    text-align:right;
+}
+
+.hariniRating span{
+    display:block;
+    font-size:12px;
+    color:#555;
+}
+
+/* PRODUCTS */
+.hariniProductGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.hariniProductCard{
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    position:relative;
+    transition:0.3s;
+}
+
+.hariniProductCard:hover{
+    transform:translateY(-6px);
+}
+
+.hariniProductCard img{
+    width:100%;
+    height:160px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+.discount{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:#ff4d6d;
+    color:#fff;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.price{
+    margin-top:10px;
+}
+
+.price .new{
+    color:#2e7d32;
+    font-weight:600;
+}
+
+.price .old{
+    text-decoration:line-through;
+    color:#999;
+    margin-left:10px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .hariniShopWrapper{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hariniShopBlock{
+        width:100%;
+        max-width:600px;
+    }
+
+    .hariniProductGrid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+<script>
+function fadeReveal() {
+    const elements = document.querySelectorAll(".fadeAnim");
+
+    elements.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", fadeReveal);
+</script>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<section class="hariniFullBanner zoomBg">
+    <div class="hariniOverlay"></div>
+
+    <div class="hariniBannerContent">
+        <h1>Find Reliable Products In<br>One Marketplace</h1>
+        <p>Quality marketplace essentials for everyday use</p>
+        <a href="contact.html" class="hariniBannerBtn">Shop Now</a>
+    </div>
+</section>
+<style>
+    /* ================= FULL BACKGROUND BANNER ================= */
+
+.hariniFullBanner{
+    position:relative;
+    height:500px;
+    border-radius:20px;
+    overflow:hidden;
+
+    background-image:url("bgg.webp");  /* YOUR IMAGE */
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    align-items:center;
+    padding:0 8%;
+
+    transition:transform 1.2s ease, opacity 1s ease;
+}
+
+/* Zoom animation initial */
+.zoomBg{
+    opacity:0;
+    transform:scale(1.15);
+}
+
+.zoomBg.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* Optional overlay (you can change color) */
+.hariniOverlay{
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,0.6); /* Change color here */
+}
+
+/* Content */
+.hariniBannerContent{
+    position:relative;
+    z-index:2;
+    max-width:600px;
+}
+
+.hariniBannerContent h1{
+    font-size:48px;
+    color:#0f3d3e;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hariniBannerContent p{
+    font-size:16px;
+    color:#333;
+    margin-bottom:30px;
+}
+
+.hariniBannerBtn{
+    display:inline-block;
+    padding:14px 32px;
+    background:#0f3d3e;
+    color:#fff;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.hariniBannerBtn:hover{
+    background:#063233;
+    transform:translateY(-3px);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .hariniFullBanner{
+        height:400px;
+        padding:0 20px;
+        text-align:center;
+        justify-content:center;
+    }
+
+    .hariniBannerContent h1{
+        font-size:30px;
+    }
+}
+</style>
+<script>
+function zoomBackground() {
+    const banner = document.querySelector(".zoomBg");
+    const windowHeight = window.innerHeight;
+    const elementTop = banner.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+        banner.classList.add("show");
+    }
+}
+
+window.addEventListener("scroll", zoomBackground);
+</script>
+
+<section class="hariniBigShop">
+
+    <div class="hariniBigContainer">
+
+        <!-- LEFT PRODUCTS -->
+        <div class="hariniBigColumn">
+
+            <div class="hariniBigCard">
+                <span class="discount">34%</span>
+                <img src="vennila.webp">
+                <h4>Tillamook Vanilla Bean Low Fat Yogurt</h4>
+                <div class="price">
+                    <span class="new">$2.11</span>
+                    <span class="old">$3.19</span>
+                </div>
+            </div>
+
+            <div class="hariniBigCard">
+                <span class="discount">38%</span>
+                <img src="yogert.webp">
+                <h4>Tillamook Marionberry Greek Yogurt</h4>
+                <div class="price">
+                    <span class="new">$1.98</span>
+                    <span class="old">$3.17</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- CENTER BIG BANNER -->
+        <div class="hariniBigCenter">
+
+            <div class="hariniBigContent">
+                <h2>Better Shopping<br>Marketplace</h2>
+                <p>
+                    Find everyday products from trusted sellers,
+                    focused on value and reliability.
+                </p>
+                <a href="contact.html" class="hariniBigBtn">Shop Now</a>
+            </div>
+
+            <img src="beverages.webp" class="hariniBigImage">
+
+        </div>
+
+
+        <!-- RIGHT PRODUCTS -->
+        <div class="hariniBigColumn">
+
+            <div class="hariniBigCard">
+                <span class="discount">23%</span>
+                <img src="beef.webp">
+                <h4>Fat Ground Beef Chuck Fresh</h4>
+                <div class="price">
+                    <span class="new">$7.92</span>
+                </div>
+            </div>
+
+            <div class="hariniBigCard">
+                <span class="discount"></span>
+                <img src="lobster.webp">
+                <h4>Original Breakfast Pork Sausage</h4>
+                <div class="price">
+                    <span class="new">$2.19</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .hariniBigShop{
+    padding:140px 6%;
+    background:#eef2f3;
+}
+
+.hariniBigContainer{
+    display:flex;
+    justify-content:space-between;
+    gap:60px;
+    align-items:center;
+}
+
+/* SIDE COLUMNS */
+.hariniBigColumn{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+/* BIG CARDS */
+.hariniBigCard{
+    background:#fff;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.hariniBigCard:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+.hariniBigCard img{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    margin-bottom:20px;
+}
+
+.hariniBigCard h4{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#0f3d3e;
+}
+
+.price .new{
+    font-size:22px;
+    font-weight:700;
+    color:#1b5e20;
+}
+
+.price .old{
+    text-decoration:line-through;
+    color:#999;
+    margin-left:10px;
+}
+
+/* CENTER SECTION */
+.hariniBigCenter{
+    flex:1.2;
+    text-align:center;
+    position:relative;
+}
+
+.hariniBigContent h2{
+    font-size:54px;
+    margin-bottom:20px;
+    color:#0f3d3e;
+}
+
+.hariniBigContent p{
+    font-size:18px;
+    color:#555;
+    margin-bottom:30px;
+}
+
+.hariniBigBtn{
+    padding:16px 40px;
+    background:#0f3d3e;
+    color:#fff;
+    border-radius:35px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.hariniBigBtn:hover{
+    background:#063233;
+    transform:translateY(-4px);
+}
+
+/* BIG CENTER IMAGE */
+.hariniBigImage{
+    width:100%;
+    max-width:500px;
+    margin-top:50px;
+}
+
+/* DISCOUNT */
+.discount{
+    background:#ff4d6d;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+    position:absolute;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+    .hariniBigContainer{
+        flex-direction:column;
+    }
+
+    .hariniBigCenter{
+        order:-1;
+    }
+
+    .hariniBigContent h2{
+        font-size:40px;
+    }
+}
+</style>
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+<section class="hariniFaqSection">
+
+    <div class="hariniFaqContainer">
+
+        <!-- LEFT IMAGE -->
+        <div class="hariniFaqImage">
+            <img src="grocesserymamn.webp" alt="Grocery Man">
+        </div>
+
+        <!-- RIGHT FAQ -->
+        <div class="hariniFaqContent">
+
+            <div class="hariniFaqItem">
+                <button class="hariniFaqQuestion">
+                    How does our marketplace connect buyers with trusted sellers?
+                    <span>+</span>
+                </button>
+                <div class="hariniFaqAnswer">
+                    <p>
+                        Our marketplace carefully verifies sellers and ensures
+                        that all listed products meet quality standards before
+                        being available to buyers.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hariniFaqItem">
+                <button class="hariniFaqQuestion">
+                    What makes our marketplace products reliable and high quality?
+                    <span>+</span>
+                </button>
+                <div class="hariniFaqAnswer">
+                    <p>
+                        We conduct quality checks and only allow trusted vendors
+                        with positive ratings to sell products on our platform.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hariniFaqItem">
+                <button class="hariniFaqQuestion">
+                    What is the return and refund policy?
+                    <span>+</span>
+                </button>
+                <div class="hariniFaqAnswer">
+                    <p>
+                        Customers can request returns within 7 days of delivery.
+                        Refunds are processed once the item is inspected.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    .hariniFaqSection{
+    padding:120px 8%;
+    background:#f4f5f6;
+}
+
+.hariniFaqContainer{
+    display:flex;
+    align-items:center;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+/* LEFT IMAGE */
+.hariniFaqImage{
+    flex:1;
+}
+
+.hariniFaqImage img{
+    width:100%;
+    max-width:500px;
+}
+
+/* RIGHT FAQ */
+.hariniFaqContent{
+    flex:1;
+}
+
+.hariniFaqItem{
+    border-bottom:1px solid #ddd;
+    margin-bottom:15px;
+}
+
+/* Question Button */
+.hariniFaqQuestion{
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    font-size:18px;
+    padding:20px 0;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:500;
+}
+
+/* Answer Hidden */
+.hariniFaqAnswer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+}
+
+.hariniFaqAnswer p{
+    padding-bottom:20px;
+    color:#555;
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* Active State */
+.hariniFaqItem.active .hariniFaqAnswer{
+    max-height:200px;
+}
+
+.hariniFaqItem.active .hariniFaqQuestion span{
+    transform:rotate(45deg);
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .hariniFaqContainer{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hariniFaqQuestion{
+        font-size:16px;
+    }
+}
+</style>
+
+<script>
+const faqItems = document.querySelectorAll(".hariniFaqItem");
+
+faqItems.forEach(item => {
+    const button = item.querySelector(".hariniFaqQuestion");
+
+    button.addEventListener("click", () => {
+
+        // Close others (optional)
+        faqItems.forEach(i => {
+            if(i !== item){
+                i.classList.remove("active");
+            }
+        });
+
+        item.classList.toggle("active");
+    });
+});
+</script>
+
+
+<section class="hariniLoopSection">
+    <div class="hariniLoopWrapper">
+        <div class="hariniLoopTrack">
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+            <span>🚚 Delivery in 10 mins</span>
+        </div>
+    </div>
+</section>
+<style>
+    .hariniLoopSection{
+    width:100%;
+    overflow:hidden;
+    background:#1b5e20;
+    padding:18px 0;
+}
+
+.hariniLoopWrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.hariniLoopTrack{
+    display:flex;
+    width:max-content;
+    gap:60px;
+    animation:hariniScroll 15s linear infinite;
+}
+
+.hariniLoopTrack span{
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:1px;
+}
+
+/* Smooth infinite scroll */
+@keyframes hariniScroll{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+</style>
+
+
+<!-- FOOTER -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="hariniFooterSection">
+
+    <div class="hariniFooterContainer">
+
+        <!-- BRAND SECTION -->
+        <div class="hariniFooterBrand">
+            <!-- Replace this text with your Stackly logo image -->
+            <h2 class="hariniFooterLogo">Stackly</h2>
+
+            <p>Fresh & Organic Grocery Store</p>
+
+            <p>
+                24, Green Market Street,<br>
+                Chennai, Tamil Nadu, India
+            </p>
+
+            <a href="contact.html" class="hariniMapLink">Open in Maps</a>
+
+            <p class="hariniContactInfo">
+                support@stackly.com <br>
+                +91 98765 43210
+            </p>
+
+            <div class="hariniSocialIcons">
+                <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="404.html"><i class="fab fa-instagram"></i></a>
+                <a href="404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- COMPANY -->
+        <div class="hariniFooterColumn">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                
+                <li><a href="shop.html">shop </a></li>
+                <li><a href="dashboard.html">dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- CUSTOMER -->
+        <div class="hariniFooterColumn">
+            <h4>Customer</h4>
+            <ul>
+                <li><a href="404.html">My Account</a></li>
+                <li><a href="404.html">Track Order</a></li>
+                <li><a href="404.html">Return Policy</a></li>
+                <li><a href="404.html">FAQs</a></li>
+                <li><a href="404.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="hariniFooterColumn">
+            <h4>Newsletter</h4>
+            <p>Subscribe to get fresh deals & healthy tips.</p>
+
+            <div class="hariniNewsletterBox">
+                <input type="email" placeholder="Enter your email">
+                <button><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <small>
+                By subscribing, you agree to our Terms & Privacy Policy.
+            </small>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="hariniFooterBottom">
+        <p>© 2026 Stackly Grocery. All Rights Reserved.</p>
+
+        <div class="hariniPayments">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+            <i class="fab fa-cc-paypal"></i>
+        </div>
+    </div>
+
+</footer>
+<style>
+    .hariniFooterSection{
+    background:#5e845e;
+    padding:80px 8% 30px;
+    font-family:'Poppins',sans-serif;
+    color:#393737;
+}
+
+.hariniFooterContainer{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:50px;
+    margin-bottom:50px;
+}
+
+.hariniFooterLogo{
+    font-size:32px;
+    font-weight:700;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.hariniFooterBrand p{
+    margin:10px 0;
+    color:#1f1c1c;
+    line-height:1.6;
+}
+
+.hariniMapLink{
+    color:#ff8f00;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.hariniContactInfo{
+    margin-top:15px;
+}
+
+.hariniSocialIcons{
+    margin-top:15px;
+}
+
+.hariniSocialIcons a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    background:#303325;
+    border-radius:50%;
+    margin-right:12px;
+    color:#ffffff;
+    transition:0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.hariniSocialIcons a:hover{
+    background:#2e7d32;
+    color:#fff;
+    transform:translateY(-5px);
+}
+
+/* Columns */
+.hariniFooterColumn h4{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.hariniFooterColumn ul{
+    list-style:none;
+    padding:0;
+}
+
+.hariniFooterColumn ul li{
+    margin-bottom:12px;
+}
+
+.hariniFooterColumn ul li a{
+    text-decoration:none;
+    color:#ffffff;
+    transition:0.3s;
+}
+
+.hariniFooterColumn ul li a:hover{
+    color:#2e7d32;
+}
+
+/* Newsletter */
+.hariniNewsletterBox{
+    display:flex;
+    margin:15px 0;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid #ddd;
+}
+
+.hariniNewsletterBox input{
+    border:none;
+    padding:12px 15px;
+    flex:1;
+    outline:none;
+}
+
+.hariniNewsletterBox button{
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    padding:0 18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hariniNewsletterBox button:hover{
+    background:#1b5e20;
+}
+
+.hariniFooterColumn small{
+    color:#fcfcfc;
+}
+
+/* Bottom */
+.hariniFooterBottom{
+    border-top:1px solid #ddd;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.hariniPayments i{
+    font-size:26px;
+    margin-left:15px;
+    color:#666;
+    transition:0.3s;
+}
+
+.hariniPayments i:hover{
+    color:#2e7d32;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .hariniFooterContainer{
+        grid-template-columns:1fr;
+    }
+
+    .hariniFooterBottom{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+</style>

@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Header</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#f4f8f4,#e7f1e8);
+  min-height:200vh;
+  transition:0.3s;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:#2f6b3c;
+  color:#fff;
+  text-align:center;
+  padding:8px;
+  font-size:14px;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 60px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  transition:all 0.3s ease;
+}
+
+.header.scrolled{
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.1);
+  padding:12px 60px;
+}
+
+/* LOGO */
+.logo img{
+    width:200px;
+    filter: brightness(0) saturate(100%) 
+            invert(73%) sepia(22%) 
+            saturate(567%) hue-rotate(60deg);
+}
+
+/* DESKTOP NAV */
+.nav{
+  position:relative;
+}
+
+.nav ul{
+  display:flex;
+  list-style:none;
+  background:#3d7f4e;
+  padding:12px 35px;
+  border-radius:50px;
+  gap:40px;
+}
+
+.nav ul li{
+  position:relative;
+}
+
+.nav ul li a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav ul li a:hover{
+  transform:translateY(-2px);
+}
+
+/* DESKTOP MEGA MENU */
+.mega-menu{
+  position:absolute;
+  top:70px;
+  left:-50px;
+  width:350px;
+  background:#07340b;
+  color: darkolivegreen;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(20px);
+  transition:0.3s ease;
+}
+
+.dropdown:hover .mega-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.mega-menu h4{
+  margin-bottom:10px;
+  color:#2f6b3c;
+}
+
+.mega-menu a{
+  display:block;
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+/* ICONS */
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.icons i{
+  background:#3d7f4e;
+  color:#fff;
+  padding:10px;
+  border-radius:50%;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.icons i:hover{
+  background:#2f6b3c;
+  transform:scale(1.1);
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  z-index:1100;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .icons{
+    display:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+  .nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#2f6b3c;
+    transform:translateX(-100%);
+    transition:0.4s ease;
+    display:flex;
+    justify-content:center;
+    padding-top:120px;
+  }
+
+  .nav.active{
+    transform:translateX(0);
+  }
+
+  .nav ul{
+    flex-direction:column;
+    background:none;
+    gap:30px;
+    text-align:center;
+  }
+
+  /* Disable desktop hover */
+  .dropdown:hover .mega-menu{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+  }
+
+  .mega-menu{
+    position:static;
+    background:none;
+    box-shadow:none;
+    padding:0;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+
+  .mega-menu.active{
+    max-height:300px;
+  }
+
+  .mega-menu h4{
+    color:#070707;
+    margin-top:15px;
+  }
+
+  .mega-menu a{
+    color:#000000;
+  }
+
+}
+.icons{
+  display:flex;
+  gap:20px;
+}
+
+.iconButtonStyle{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:18px;
+  transition:0.3s ease;
+  cursor:pointer;
+}
+
+/* Default style */
+.iconButtonStyle{
+  background:#ffffff;
+  color:#333;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hover effect */
+.iconButtonStyle:hover{
+  transform:translateY(-3px);
+}
+@media (max-width: 768px) {
+  .icons {
+    display: none;
+  }
+}
+.logo img{
+    width:220px;
+    height:auto;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    <img src="logo.webp" alt="logo">
+  </div>
+
+  <nav class="nav">
+    <ul>
+      <li class="dropdown">
+        <a href="index.html" class="home-toggle">HOME</a>
+
+        <div class="mega-menu">
+          <h4>Home Pages</h4>
+          <a href="home.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="shop.html">SHOP</a></li>
+      <li><a href="dashboard.html">DASHBOARD</a></li>
+      <li><a href="contact.html" style="color:#6affb4;">CONTACT</a></li>
+      
+    </ul>
+  </nav>
+
+  <div class="icons">
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-regular fa-user"></i>
+  </a>
+
+  <a href="contact.html" class="iconButtonStyle">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </a>
+
+  <a href="login.html" class="iconButtonStyle">
+    <i class="fa-solid fa-bag-shopping"></i>
+  </a>
+
+</div>
+
+  <div class="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+</header>
+
+<script>
+
+/* STICKY */
+window.addEventListener("scroll", function(){
+  document.querySelector(".header")
+  .classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* HAMBURGER */
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector(".nav");
+const body = document.body;
+
+hamburger.addEventListener("click", ()=>{
+  nav.classList.toggle("active");
+  body.classList.toggle("menu-open");
+
+  const icon = hamburger.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+/* MOBILE DROPDOWN */
+const homeToggle = document.querySelector(".home-toggle");
+const megaMenu = document.querySelector(".mega-menu");
+
+homeToggle.addEventListener("click", function(e){
+  if(window.innerWidth <= 900){
+    e.preventDefault();
+    megaMenu.classList.toggle("active");
+  }
+});
+
+</script>
+<section class="hariniShopBanner">
+
+    <div class="hariniShopOverlay"></div>
+
+    <div class="hariniShopContent">
+        <h1>CONTACT US</h1>
+
+        <p>
+           Contact us to get in touch with our team and receive assistance with any questions or concerns you may have.
+            We're here to help you with your shopping experience.
+        </p>
+    </div>
+
+</section>
+<style>
+    .hariniShopBanner{
+    position:relative;
+    height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-radius:20px;
+    overflow:hidden;
+
+    /* ADD YOUR IMAGE HERE */
+    background-image:url("bgg.webp");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* Dark Overlay */
+.hariniShopOverlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+/* Content */
+.hariniShopContent{
+    position:relative;
+    z-index:2;
+    max-width:700px;
+    padding:0 20px;
+}
+
+.hariniShopContent h1{
+    font-size:64px;
+    letter-spacing:3px;
+    color:#fff;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.hariniShopContent p{
+    font-size:16px;
+    color:#ddd;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+/* Store Buttons */
+.hariniStoreButtons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.storeBtn{
+    padding:14px 30px;
+    background:#000;
+    color:#fff;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.storeBtn.google{
+    background:#1b5e20;
+}
+
+.storeBtn:hover{
+    transform:translateY(-4px);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .hariniShopContent h1{
+        font-size:38px;
+    }
+
+    .hariniShopBanner{
+        height:400px;
+    }
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f3fbf4,#e6f4ea);
+    overflow-x:hidden;
+}
+
+/* WRAPPER */
+.dashboardWrapper{
+    padding:120px 8%;
+}
+
+/* TITLE */
+.dashboardTitle{
+    font-size:42px;
+    color:#1b5e20;
+    margin-bottom:60px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+.dashboardTitle.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* STATS GRID */
+.statsGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+/* STAT CARD */
+.statCard{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(12px);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    transition:0.4s ease;
+
+    opacity:0;
+    transform:translateY(60px);
+}
+.statCard.show{
+    opacity:1;
+    transform:translateY(0);
+}
+.statCard:hover{
+    transform:translateY(-12px) scale(1.05);
+}
+
+.statIcon{
+    width:60px;
+    height:60px;
+    background:#2e7d32;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.statNumber{
+    font-size:36px;
+    font-weight:700;
+    color:#1b5e20;
+}
+
+.statLabel{
+    color:#666;
+    margin-top:8px;
+}
+
+/* RECENT ORDERS */
+.recentSection{
+    margin-top:100px;
+}
+
+.recentTitle{
+    font-size:28px;
+    margin-bottom:30px;
+    color:#1b5e20;
+}
+
+.orderTable{
+    width:100%;
+    background:#ffffff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.orderTable table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.orderTable th,
+.orderTable td{
+    padding:18px 25px;
+    text-align:left;
+}
+
+.orderTable th{
+    background:#2e7d32;
+    color:#fff;
+}
+
+.orderTable tr{
+    border-bottom:1px solid #eee;
+    transition:0.3s;
+}
+
+.orderTable tr:hover{
+    background:#f1f8f2;
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.delivered{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.pending{
+    background:#fff3e0;
+    color:#ff8f00;
+}
+
+/* CHART */
+.chartBox{
+    margin-top:100px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(15px);
+    padding:50px;
+    border-radius:30px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
+
+    opacity:0;
+    transform:translateY(60px);
+    transition:0.8s ease;
+}
+.chartBox.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.chartBox h3{
+    margin-bottom:30px;
+    color:#1b5e20;
+}
+
+canvas{
+    max-height:350px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .dashboardWrapper{
+        padding:80px 20px;
+    }
+    .dashboardTitle{
+        font-size:28px;
+    }
+    .statNumber{
+        font-size:28px;
+    }
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f3fbf4,#e6f4ea);
+    overflow-x:hidden;
+}
+
+/* WRAPPER */
+.contactWrapper{
+    padding:120px 8%;
+}
+
+/* TITLE */
+.contactTitle{
+    font-size:42px;
+    color:#1b5e20;
+    text-align:center;
+    margin-bottom:20px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+.contactSubtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:70px;
+}
+.contactTitle.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* GRID */
+.contactGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+}
+
+/* LEFT INFO */
+.contactInfo{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.infoCard{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    display:flex;
+    align-items:center;
+    gap:20px;
+    transition:0.4s ease;
+    opacity:0;
+    transform:translateX(-60px);
+}
+.infoCard.show{
+    opacity:1;
+    transform:translateX(0);
+}
+.infoCard:hover{
+    transform:translateY(-8px) scale(1.03);
+}
+
+.infoIcon{
+    width:60px;
+    height:60px;
+    background:#2e7d32;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    font-size:22px;
+}
+
+/* FORM */
+.contactForm{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(15px);
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
+    opacity:0;
+    transform:translateX(60px);
+    transition:0.8s ease;
+}
+.contactForm.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.contactForm h3{
+    margin-bottom:25px;
+    color:#1b5e20;
+}
+
+.formGroup{
+    margin-bottom:20px;
+}
+
+.formGroup input,
+.formGroup textarea{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    outline:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
+/* VALIDATION COLORS */
+input:invalid,
+textarea:invalid{
+    border-color:#e53935;
+}
+
+input:valid,
+textarea:valid{
+    border-color:#2e7d32;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus{
+    box-shadow:0 0 0 3px rgba(46,125,50,0.15);
+}
+
+textarea{
+    resize:none;
+    height:120px;
+}
+
+.submitBtn{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#2e7d32;
+    color:#fff;
+    font-size:16px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+.submitBtn:hover{
+    background:#1b5e20;
+    transform:scale(1.05);
+}
+
+/* MAP */
+.mapSection{
+    margin-top:100px;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
+    opacity:0;
+    transform:scale(0.9);
+    transition:0.8s ease;
+}
+.mapSection.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+.mapSection iframe{
+    width:100%;
+    height:350px;
+    border:0;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .contactGrid{
+        grid-template-columns:1fr;
+    }
+    .contactWrapper{
+        padding:80px 20px;
+    }
+    .contactTitle{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="contactWrapper">
+
+    <h1 class="contactTitle">Get In Touch</h1>
+    <p class="contactSubtitle">We would love to hear from you</p>
+
+    <div class="contactGrid">
+
+        <!-- LEFT INFO -->
+        <div class="contactInfo">
+
+            <div class="infoCard">
+                <div class="infoIcon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                    <h4>Address</h4>
+                    <p>Hyderabad, India</p>
+                </div>
+            </div>
+
+            <div class="infoCard">
+                <div class="infoIcon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                    <h4>Phone</h4>
+                    <p>+91 98765 43210</p>
+                </div>
+            </div>
+
+            <div class="infoCard">
+                <div class="infoIcon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                    <h4>Email</h4>
+                    <p>support@freshstore.com</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT FORM -->
+        <form class="contactForm" action="404.html" method="GET">
+
+            <h3>Send Message</h3>
+
+            <div class="formGroup">
+                <input type="text" name="name" placeholder="Your Name" required minlength="3">
+            </div>
+
+            <div class="formGroup">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="formGroup">
+                <textarea name="message" placeholder="Your Message" required minlength="10"></textarea>
+            </div>
+
+            <button type="submit" class="submitBtn">Send Message</button>
+
+        </form>
+
+    </div>
+
+<script>
+
+/* SCROLL ANIMATION */
+const elements = document.querySelectorAll('.contactTitle, .infoCard, .contactForm, .mapSection');
+
+function revealOnScroll(){
+    elements.forEach(el=>{
+        const position = el.getBoundingClientRect().top;
+        if(position < window.innerHeight - 100){
+            el.classList.add('show');
+        }
+    });
+}
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+</script>
+
+</body>
+</html>
+
+
+
+<!-- FOOTER -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="hariniFooterSection">
+
+    <div class="hariniFooterContainer">
+
+        <!-- BRAND SECTION -->
+        <div class="hariniFooterBrand">
+            <!-- Replace this text with your Stackly logo image -->
+            <h2 class="hariniFooterLogo">Stackly</h2>
+
+            <p>Fresh & Organic Grocery Store</p>
+
+            <p>
+                24, Green Market Street,<br>
+                Chennai, Tamil Nadu, India
+            </p>
+
+            <a href="contact.html" class="hariniMapLink">Open in Maps</a>
+
+            <p class="hariniContactInfo">
+                support@stackly.com <br>
+                +91 98765 43210
+            </p>
+
+            <div class="hariniSocialIcons">
+                <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="404.html"><i class="fab fa-instagram"></i></a>
+                <a href="404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- COMPANY -->
+        <div class="hariniFooterColumn">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                
+                <li><a href="shop.html">shop </a></li>
+                <li><a href="dashboard.html">dashboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- CUSTOMER -->
+        <div class="hariniFooterColumn">
+            <h4>Customer</h4>
+            <ul>
+                <li><a href="404.html">My Account</a></li>
+                <li><a href="404.html">Track Order</a></li>
+                <li><a href="404.html">Return Policy</a></li>
+                <li><a href="404.html">FAQs</a></li>
+                <li><a href="404.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="hariniFooterColumn">
+            <h4>Newsletter</h4>
+            <p>Subscribe to get fresh deals & healthy tips.</p>
+
+            <div class="hariniNewsletterBox">
+                <input type="email" placeholder="Enter your email">
+                <button><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <small>
+                By subscribing, you agree to our Terms & Privacy Policy.
+            </small>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="hariniFooterBottom">
+        <p>© 2026 Stackly Grocery. All Rights Reserved.</p>
+
+        <div class="hariniPayments">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+            <i class="fab fa-cc-paypal"></i>
+        </div>
+    </div>
+
+</footer>
+<style>
+    .hariniFooterSection{
+   background:linear-gradient(135deg,#f3fbf4,#e6f4ea);
+    padding:80px 8% 30px;
+    font-family:'Poppins',sans-serif;
+    color:#393737;
+}
+
+.hariniFooterContainer{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:50px;
+    margin-bottom:50px;
+}
+
+.hariniFooterLogo{
+    font-size:32px;
+    font-weight:700;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.hariniFooterBrand p{
+    margin:10px 0;
+    color:#1f1c1c;
+    line-height:1.6;
+}
+
+.hariniMapLink{
+    color:#ff8f00;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.hariniContactInfo{
+    margin-top:15px;
+}
+
+.hariniSocialIcons{
+    margin-top:15px;
+}
+
+.hariniSocialIcons a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    background:#303325;
+    border-radius:50%;
+    margin-right:12px;
+    color:#ffffff;
+    transition:0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.hariniSocialIcons a:hover{
+    background:#2e7d32;
+    color:#36572e;
+    transform:translateY(-5px);
+}
+
+/* Columns */
+.hariniFooterColumn h4{
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.hariniFooterColumn ul{
+    list-style:none;
+    padding:0;
+}
+
+.hariniFooterColumn ul li{
+    margin-bottom:12px;
+}
+
+.hariniFooterColumn ul li a{
+    text-decoration:none;
+    color:#251e1e;
+    transition:0.3s;
+}
+
+.hariniFooterColumn ul li a:hover{
+    color:#2e7d32;
+}
+
+/* Newsletter */
+.hariniNewsletterBox{
+    display:flex;
+    margin:15px 0;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid #ddd;
+}
+
+.hariniNewsletterBox input{
+    border:none;
+    padding:12px 15px;
+    flex:1;
+    outline:none;
+}
+
+.hariniNewsletterBox button{
+    background:#2e7d32;
+    color:#181717;
+    border:none;
+    padding:0 18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hariniNewsletterBox button:hover{
+    background:#1b5e20;
+}
+
+.hariniFooterColumn small{
+    color:#000000;
+}
+
+/* Bottom */
+.hariniFooterBottom{
+    border-top:1px solid #ddd;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.hariniPayments i{
+    font-size:26px;
+    margin-left:15px;
+    color:#666;
+    transition:0.3s;
+}
+
+.hariniPayments i:hover{
+    color:#2e7d32;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .hariniFooterContainer{
+        grid-template-columns:1fr;
+    }
+
+    .hariniFooterBottom{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+</style>
